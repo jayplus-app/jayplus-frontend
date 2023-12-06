@@ -1,4 +1,4 @@
-import { apiUrl } from 'lib/constants/env'
+import { apiUrl } from 'lib/utils/env'
 import VehicleType from 'lib/interfaces/VehicleType'
 
 export async function fetchVehicleTypes(): Promise<VehicleType[]> {
