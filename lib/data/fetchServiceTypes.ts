@@ -6,7 +6,7 @@ import { unstable_noStore as noStore } from 'next/cache'
 export async function fetchServiceTypes(): Promise<ServiceType[]> {
   noStore()
   try {
-    const subdomain = getSubdomain()
+    const subdomain = await getSubdomain()
     const options = {
       method: 'GET',
       headers: {

@@ -6,7 +6,8 @@ import { unstable_noStore as noStore } from 'next/cache'
 export async function fetchVehicleTypes(): Promise<VehicleType[]> {
   noStore()
   try {
-    const subdomain = getSubdomain()
+    const subdomain = await getSubdomain()
+
     const options = {
       method: 'GET',
       headers: {
@@ -14,6 +15,7 @@ export async function fetchVehicleTypes(): Promise<VehicleType[]> {
         'Business-Name': subdomain,
       },
     }
+
     const res = await fetch(`${apiUrl}/booking/vehicle-types`, options)
     const data: VehicleType[] = await res.json()
     return data

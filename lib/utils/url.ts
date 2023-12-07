@@ -1,13 +1,16 @@
-import { headers } from 'next/headers'
+import { isClientSide } from './client-server'
+import { getClientSubdomain } from './client/url'
+import { getServerSubdomain } from './server/url'
+
 /**
- * Extracts the subdomain from headers.
- * Assumes that the hostname follows the format: [subdomain].[domain].[tld]
- * @returns {string} The subdomain, or null if no subdomain is present.
+ * Retrieves the subdomain of the current environment.
+ * If the code is running on the client side, it uses the `getClientSubdomain` function.
+ * Otherwise, it uses the `getServerSubdomain` function for server-side execution.
+ * @returns {Promise<string>} A promise that resolves to the subdomain as a string.
  */
-export function getSubdomain() {
-  const headersList = headers()
-  const host = headersList.get('host')
-  const hostParts = host ? host.split('.') : ''
-  const subdomain = hostParts[0]
+export async function getSubdomain() {
+  const subdomain = isClientSide
+    ? getClientSubdomain()
+    : await getServerSubdomain()
   return subdomain
 }
