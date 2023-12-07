@@ -1,17 +1,13 @@
 'use client'
-import VehicleType from 'lib/interfaces/VehicleType'
-import { useState, ChangeEvent } from 'react'
-export default function VehicleTypeList({
-  vehicleTypes,
-}: {
-  vehicleTypes: VehicleType[]
-}) {
-  const [selectedVehicleTypeID, setSelectedVehicleTypeID] = useState<number>(
-    vehicleTypes[0].id
-  )
+import { ChangeEvent } from 'react'
+import { useBookingSelectionContext } from 'lib/context/booking-context/BookingSelectionContext'
+
+export default function VehicleTypeList() {
+  const { vehicleTypes, selectedVehicleTypeID, setSelectedVehicleTypeID } =
+    useBookingSelectionContext()
 
   const handleSelectVehicleType = (id: number) => {
-    setSelectedVehicleTypeID(id)
+    setSelectedVehicleTypeID(`vt-${id}`)
   }
 
   return (
@@ -22,7 +18,7 @@ export default function VehicleTypeList({
             type='radio'
             name='vehicleType'
             value={vehicleType.id}
-            checked={selectedVehicleTypeID === vehicleType.id}
+            checked={selectedVehicleTypeID === `vt-${vehicleType.id}`}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               handleSelectVehicleType(Number(e.target.value))
             }
