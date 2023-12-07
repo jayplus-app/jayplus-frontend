@@ -45,5 +45,11 @@ export function BookingSelectionProvider({
 }
 
 export function useBookingSelectionContext() {
-  return useContext(BookingSelectionContext)
+  const bookingSelectionContext = useContext(BookingSelectionContext)
+  if (!bookingSelectionContext) {
+    throw new Error(
+      'useBookingSelectionContext must be used within BookingSelectionProvider'
+    )
+  }
+  return bookingSelectionContext
 }
