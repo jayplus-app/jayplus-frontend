@@ -1,6 +1,6 @@
-import ServiceTypeSelection from './ServiceTypeSelection/ServiceTypeSelection'
+import ServiceTypeSelection from './ServiceTypeSelection'
 import TimeSelection from './TimeSelection/TimeSelection'
-import VehicleTypeSelection from './VehicleTypeSelection/VehicleTypeSelection'
+import VehicleTypeSelection from './VehicleTypeSelection'
 
 export default function Page() {
   return (
