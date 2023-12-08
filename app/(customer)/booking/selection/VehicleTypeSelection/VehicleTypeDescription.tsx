@@ -1,5 +1,5 @@
 'use client'
-import { useBookingSelectionContext } from 'lib/context/booking-context/BookingSelectionContext'
+import { useBookingSelectionContext } from 'context/booking-context/BookingSelectionContext'
 
 export default function VehicleTypeDescription() {
   const { vehicleTypes, selectedVehicleTypeID: vehicleTypeSelectedID } =
@@ -9,7 +9,7 @@ export default function VehicleTypeDescription() {
     <div>
       {
         vehicleTypes.find(
-          vehicleType => `vt-${vehicleType.id}` === vehicleTypeSelectedID
+          vehicleType => vehicleType.id === vehicleTypeSelectedID
         )?.description
       }
     </div>

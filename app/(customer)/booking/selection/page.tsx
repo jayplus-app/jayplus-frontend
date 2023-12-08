@@ -1,9 +1,12 @@
-import { fetchVehicleTypes } from 'lib/data/fetchVehicleTypes'
+import {
+  fetchVehicleTypes,
+  fetchServiceTypes,
+  fetchBookingTimeslots,
+} from 'lib/data/booking'
 import ServiceTypeSelection from './ServiceTypeSelection'
 import TimeSelection from './TimeSelection/TimeSelection'
 import VehicleTypeSelection from './VehicleTypeSelection'
-import { BookingSelectionProvider } from 'lib/context/booking-context/BookingSelectionContext'
-import { fetchServiceTypes } from 'lib/data/fetchServiceTypes'
+import { BookingSelectionProvider } from 'context/booking-context/BookingSelectionContext'
 
 export default async function Page() {
   const vehicleTypes = await fetchVehicleTypes()

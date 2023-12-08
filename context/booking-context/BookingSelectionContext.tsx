@@ -6,10 +6,10 @@ import { createContext, useContext, useState } from 'react'
 const BookingSelectionContext = createContext({
   vehicleTypes: [] as VehicleType[],
   serviceTypes: [] as ServiceType[],
-  selectedVehicleTypeID: 'vt-0',
-  selectedServiceTypeID: 'st-0',
-  setSelectedVehicleTypeID: (id: string) => {},
-  setSelectedServiceTypeID: (id: string) => {},
+  selectedVehicleTypeID: 0,
+  selectedServiceTypeID: 0,
+  setSelectedVehicleTypeID: (id: number) => {},
+  setSelectedServiceTypeID: (id: number) => {},
 })
 
 export function BookingSelectionProvider({
@@ -21,11 +21,11 @@ export function BookingSelectionProvider({
   vehicleTypes: VehicleType[]
   serviceTypes: ServiceType[]
 }) {
-  const [selectedVehicleTypeID, setSelectedVehicleTypeID] = useState<string>(
-    `vt-${vehicleTypes[0].id}`
+  const [selectedVehicleTypeID, setSelectedVehicleTypeID] = useState<number>(
+    vehicleTypes[0].id
   )
-  const [selectedServiceTypeID, setSelectedServiceTypeID] = useState<string>(
-    `st-${serviceTypes[0].id}`
+  const [selectedServiceTypeID, setSelectedServiceTypeID] = useState<number>(
+    serviceTypes[0].id
   )
 
   return (

@@ -1,12 +1,12 @@
 'use client'
-import { useBookingSelectionContext } from 'lib/context/booking-context/BookingSelectionContext'
+import { useBookingSelectionContext } from 'context/booking-context/BookingSelectionContext'
 
 export function ServiceTypeList() {
   const { serviceTypes, selectedServiceTypeID, setSelectedServiceTypeID } =
     useBookingSelectionContext()
 
   const handleSelectServiceType = (id: number) => {
-    setSelectedServiceTypeID(`st-${id}`)
+    setSelectedServiceTypeID(id)
   }
 
   return (
@@ -17,7 +17,7 @@ export function ServiceTypeList() {
             type='radio'
             name='serviceType'
             value={serviceType.id}
-            checked={selectedServiceTypeID === `st-${serviceType.id}`}
+            checked={selectedServiceTypeID === serviceType.id}
             onChange={() => handleSelectServiceType(serviceType.id)}
           />
           {serviceType.name}

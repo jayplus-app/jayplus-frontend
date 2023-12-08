@@ -1,30 +1,33 @@
 'use client'
+
 import { createContext, useContext, useEffect, useState } from 'react'
 
 const StyleContext = createContext({
-  withMode: 'md',
+  widthMode: 'lg',
 })
 
 export function StyleProvider({ children }: { children: React.ReactNode }) {
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth)
+  const [windowWidth, setWindowWidth] = useState<number | undefined>(undefined)
 
   useEffect(() => {
-    window.addEventListener('resize', () => {
+    setWindowWidth(window.innerWidth)
+
+    const handleResize = () => {
       setWindowWidth(window.innerWidth)
-    })
+    }
+
+    window.addEventListener('resize', handleResize)
     return () => {
-      window.removeEventListener('resize', () => {
-        setWindowWidth(window.innerWidth)
-      })
+      window.removeEventListener('resize', handleResize)
     }
   }, [])
 
-  const withMode = windowWidth < 768 ? 'sm' : 'lg'
+  const widthMode = windowWidth && windowWidth < 768 ? 'sm' : 'lg'
 
   return (
     <StyleContext.Provider
       value={{
-        withMode: withMode,
+        widthMode: widthMode,
       }}
     >
       {children}
