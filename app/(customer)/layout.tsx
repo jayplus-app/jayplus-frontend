@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import '../globals.css'
+import { StyleProvider } from 'context/style-context/StyleContext'
 
 export const metadata: Metadata = {
   title: 'JayPlus Customer App',
@@ -12,11 +13,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='en'>
-      <body>
-        <nav>This is customer app of frontend</nav>
-        {children}
-      </body>
-    </html>
+    <StyleProvider>
+      <html lang='en'>
+        <body>
+          <nav>This is customer app of frontend</nav>
+          {children}
+        </body>
+      </html>
+    </StyleProvider>
   )
 }
