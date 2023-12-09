@@ -18,7 +18,7 @@ export default function TimeSelection({
         {Object.entries(bookingTimeslots).map(([date, timeslots]) => (
           <CalendarColumn key={date}>
             <CalendarColumnHeader>{date}</CalendarColumnHeader>
-            {bookingTimeslots[date].map(timeslot => (
+            {timeslots.map(timeslot => (
               <CalendarColumnCell
                 key={timeslot.startTime}
                 timeslot={timeslot}
