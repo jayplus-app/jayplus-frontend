@@ -1,27 +1,36 @@
 'use client'
-import { useBookingSelectionContext } from 'context/booking-context/BookingSelectionContext'
 
-export function ServiceTypeList() {
-  const { serviceTypes, selectedServiceTypeID, setSelectedServiceTypeID } =
-    useBookingSelectionContext()
+import { useUpdateQueryParams } from 'hooks/useUpdateQueryParams'
+import ServiceType from 'lib/interfaces/ServiceType'
+import Link from 'next/link'
 
-  const handleSelectServiceType = (id: number) => {
-    setSelectedServiceTypeID(id)
-  }
+export function ServiceTypeList({
+  serviceTypes,
+  selectedServiceTypeID,
+}: {
+  serviceTypes: ServiceType[]
+  selectedServiceTypeID: number
+}) {
+  const updateQueryParams = useUpdateQueryParams()
 
   return (
     <div>
       {serviceTypes.map(serviceType => (
-        <label key={serviceType.id}>
-          <input
-            type='radio'
-            name='serviceType'
-            value={serviceType.id}
-            checked={selectedServiceTypeID === serviceType.id}
-            onChange={() => handleSelectServiceType(serviceType.id)}
-          />
-          {serviceType.name}
-        </label>
+        <Link
+          key={serviceType.id}
+          href={updateQueryParams('serviceTypeID', serviceType.id)}
+        >
+          <label key={serviceType.id}>
+            <input
+              type='radio'
+              name='serviceType'
+              value={serviceType.id}
+              checked={selectedServiceTypeID === serviceType.id}
+              readOnly
+            />
+            {serviceType.name}
+          </label>
+        </Link>
       ))}
     </div>
   )

@@ -1,7 +1,9 @@
+'use client'
+
 export default function CalendarColumnHeader({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return <div>{children}</div>
+  return <div style={{ textAlign: 'center' }}>{children}</div>
 }

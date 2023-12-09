@@ -1,7 +1,28 @@
+'use client'
+
+import { useUpdateQueryParams } from 'hooks/useUpdateQueryParams'
+import BookingTimeslot from 'lib/interfaces/BookingTimeslots'
+import Link from 'next/link'
+
 export default function CalendarColumnCell({
-  children,
+  timeslot,
+  active,
 }: {
-  children: React.ReactNode
+  timeslot: BookingTimeslot
+  active: boolean
 }) {
-  return <div>{children}</div>
+  const updateQueryParams = useUpdateQueryParams()
+
+  return (
+    <Link href={updateQueryParams('datetime', timeslot.startTime)}>
+      <input
+        type='radio'
+        name='bookingTimeslots'
+        value={timeslot.startTime}
+        checked={active}
+        readOnly
+      />
+      {timeslot.startTime}
+    </Link>
+  )
 }

@@ -75,7 +75,7 @@ export async function fetchBookingTimeslots(
 ): Promise<BookingTimeslot[]> {
   noStore()
   try {
-    const subdomain = 'business1'
+    const subdomain = await getSubdomain()
     const options = {
       method: 'GET',
       headers: {
@@ -84,7 +84,7 @@ export async function fetchBookingTimeslots(
       },
     }
     const res = await fetch(
-      `${apiUrl}/booking/timeslots?date=2023-12-09&vehicleTypeID=1&serviceTypeID=1`,
+      `${apiUrl}/booking/timeslots?date=${date}&vehicleTypeID=${vehicleTypeID}&serviceTypeID=${serviceTypeID}`,
       options
     )
     const data: BookingTimeslot[] = await res.json()

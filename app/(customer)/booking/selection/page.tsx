@@ -7,8 +7,19 @@ import ServiceTypeSelection from './ServiceTypeSelection'
 import TimeSelection from './TimeSelection/TimeSelection'
 import VehicleTypeSelection from './VehicleTypeSelection'
 import { BookingSelectionProvider } from 'context/booking-context/BookingSelectionContext'
+import { addDaysToDate, todaysDate } from 'lib/utils/date'
 
-export default async function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: {
+    serviceTypeID?: string
+    vehicleTypeID?: string
+    datetime?: string
+    numCols?: string
+    startDate?: string
+  }
+}) {
   const vehicleTypes = await fetchVehicleTypes()
   const serviceTypes = await fetchServiceTypes()
 
@@ -20,6 +31,32 @@ export default async function Page() {
     return <div>No service types found</div>
   }
 
+  const selectedServiceTypeID =
+    Number(searchParams?.serviceTypeID) || serviceTypes[0].id
+
+  const selectedVehicleTypeID =
+    Number(searchParams?.vehicleTypeID) || vehicleTypes[0].id
+
+  const selectedDatetime = searchParams?.datetime || ''
+
+  const numCols = Number(searchParams?.numCols) || 3
+
+  const startDate = searchParams?.startDate || todaysDate()
+
+  const dates = Array.from({ length: numCols }, (_, i) =>
+    addDaysToDate(startDate, i)
+  )
+
+  const timeslotPromises = dates.map(date =>
+    fetchBookingTimeslots(date, selectedVehicleTypeID, selectedServiceTypeID)
+  )
+
+  const timeslotArrays = await Promise.all(timeslotPromises)
+
+  const bookingTimeslots = Object.fromEntries(
+    dates.map((date, i) => [date, timeslotArrays[i]])
+  )
+
   return (
     <BookingSelectionProvider
       vehicleTypes={vehicleTypes}
@@ -27,9 +64,18 @@ export default async function Page() {
     >
       <div>
         <h1>Booking Selection</h1>
-        <VehicleTypeSelection />
-        <ServiceTypeSelection />
-        <TimeSelection />
+        <VehicleTypeSelection
+          vehicleTypes={vehicleTypes}
+          selectedVehicleTypeID={selectedVehicleTypeID}
+        />
+        <ServiceTypeSelection
+          serviceTypes={serviceTypes}
+          selectedServiceTypeID={selectedServiceTypeID}
+        />
+        <TimeSelection
+          bookingTimeslots={bookingTimeslots}
+          selectedDatetime={selectedDatetime}
+        />
       </div>
     </BookingSelectionProvider>
   )

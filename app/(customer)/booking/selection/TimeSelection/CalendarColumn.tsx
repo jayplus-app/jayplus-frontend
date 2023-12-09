@@ -1,11 +1,9 @@
-'use client'
-
-import CalendarColumnHeader from './CalendarColumnHeader'
-
-export default function CalendarColumn({ date }: { date: string }) {
+export default function CalendarColumn({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <div>
-      <CalendarColumnHeader>{date}</CalendarColumnHeader>
-    </div>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>{children}</div>
   )
 }
