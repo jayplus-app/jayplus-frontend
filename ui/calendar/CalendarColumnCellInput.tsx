@@ -1,20 +1,16 @@
-'use client'
-
-import { useUpdateQueryParams } from 'hooks/useUpdateQueryParams'
 import BookingTimeslot from 'lib/interfaces/BookingTimeslots'
-import Link from 'next/link'
 
-export default function CalendarColumnCell({
+export default function CalendarColumnCellInput({
   timeslot,
   active,
+  onSelectTimeslot,
 }: {
   timeslot: BookingTimeslot
   active: boolean
+  onSelectTimeslot: (datetime: string) => void
 }) {
-  const updateQueryParams = useUpdateQueryParams()
-
   return (
-    <Link href={updateQueryParams('datetime', timeslot.startTime)}>
+    <label onClick={() => onSelectTimeslot(timeslot.startTime)}>
       <input
         type='radio'
         name='bookingTimeslots'
@@ -23,6 +19,6 @@ export default function CalendarColumnCell({
         readOnly
       />
       {timeslot.startTime}
-    </Link>
+    </label>
   )
 }

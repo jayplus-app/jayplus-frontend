@@ -1,15 +1,29 @@
 'use client'
+
+import { useState, createContext, useContext } from 'react'
 import ServiceType from 'lib/interfaces/ServiceType'
 import VehicleType from 'lib/interfaces/VehicleType'
-import { createContext, useContext, useState } from 'react'
 
-const BookingSelectionContext = createContext({
-  vehicleTypes: [] as VehicleType[],
-  serviceTypes: [] as ServiceType[],
+interface BookingSelectionContextProps {
+  vehicleTypes: VehicleType[]
+  serviceTypes: ServiceType[]
+  selectedVehicleTypeID: number
+  selectedServiceTypeID: number
+  selectedDatetime: string
+  setSelectedVehicleTypeID: (id: number) => void
+  setSelectedServiceTypeID: (id: number) => void
+  setSelectedDatetime: (datetime: string) => void
+}
+
+const BookingSelectionContext = createContext<BookingSelectionContextProps>({
+  vehicleTypes: [],
+  serviceTypes: [],
   selectedVehicleTypeID: 0,
   selectedServiceTypeID: 0,
-  setSelectedVehicleTypeID: (id: number) => {},
-  setSelectedServiceTypeID: (id: number) => {},
+  selectedDatetime: '',
+  setSelectedVehicleTypeID: () => {},
+  setSelectedServiceTypeID: () => {},
+  setSelectedDatetime: () => {},
 })
 
 export function BookingSelectionProvider({
@@ -22,21 +36,24 @@ export function BookingSelectionProvider({
   serviceTypes: ServiceType[]
 }) {
   const [selectedVehicleTypeID, setSelectedVehicleTypeID] = useState<number>(
-    vehicleTypes[0].id
+    vehicleTypes[0]?.id || 0
   )
   const [selectedServiceTypeID, setSelectedServiceTypeID] = useState<number>(
-    serviceTypes[0].id
+    serviceTypes[0]?.id || 0
   )
+  const [selectedDatetime, setSelectedDatetime] = useState<string>('')
 
   return (
     <BookingSelectionContext.Provider
       value={{
-        vehicleTypes: vehicleTypes,
-        serviceTypes: serviceTypes,
-        selectedVehicleTypeID: selectedVehicleTypeID,
-        selectedServiceTypeID: selectedServiceTypeID,
-        setSelectedVehicleTypeID: setSelectedVehicleTypeID,
-        setSelectedServiceTypeID: setSelectedServiceTypeID,
+        vehicleTypes,
+        serviceTypes,
+        selectedVehicleTypeID,
+        selectedServiceTypeID,
+        selectedDatetime,
+        setSelectedVehicleTypeID,
+        setSelectedServiceTypeID,
+        setSelectedDatetime,
       }}
     >
       {children}
