@@ -5,6 +5,7 @@ import VehicleType from 'lib/interfaces/VehicleType'
 import ServiceType from 'lib/interfaces/ServiceType'
 import BookingTimeslot from 'lib/interfaces/BookingTimeslots'
 import ServiceCost from 'lib/interfaces/ServiceCost'
+import Booking from 'lib/interfaces/Booking'
 
 /**
  * Fetches the vehicle types data from the server.
@@ -64,8 +65,8 @@ export async function fetchServiceTypes(): Promise<ServiceType[]> {
  * Fetches the booking timeslots data from the server.
  * Includes the subdomain which is the business name in the request header.
  * @param {string} datetime - The date and time in the format "yyyy-mm-dd hh:mm:ss".
- * @param {string} vehicleTypeID - The ID of the vehicle type.
- * @param {string} serviceTypeID - The ID of the service type.
+ * @param {number} vehicleTypeID - The ID of the vehicle type.
+ * @param {number} serviceTypeID - The ID of the service type.
  * @returns {Promise<BookingTimeslot[]>} A promise that resolves to an array of booking timeslots.
  * @throws {Error} If there is an error while fetching the data.
  */
@@ -99,8 +100,8 @@ export async function fetchBookingTimeslots(
 /**
  * Fetches the service cost data from the server.
  * Includes the subdomain which is the business name in the request header.
- * @param {string} vehicleTypeID - The ID of the vehicle type.
- * @param {string} serviceTypeID - The ID of the service type.
+ * @param {number} vehicleTypeID - The ID of the vehicle type.
+ * @param {number} serviceTypeID - The ID of the service type.
  * @returns {Promise<ServiceCost>} A promise that resolves to the service cost.
  * @throws {Error} If there is an error while fetching the data.
  */
@@ -127,5 +128,43 @@ export async function fetchServiceCost(
   } catch (error) {
     console.log(error)
     throw new Error('Failed to fetch service cost data. catch')
+  }
+}
+
+/**
+ * Creates a booking on the server.
+ * Includes the subdomain which is the business name in the request header.
+ * @param {number} vehicleTypeID - The ID of the vehicle type.
+ * @param {number} serviceTypeID - The ID of the service type.
+ * @param {string} datetime - The date and time in the format "yyyy-mm-dd hh:mm:ss".
+ * @returns {Promise<Booking>} A promise that resolves to the created booking.
+ * @throws {Error} If there is an error while creating the booking.
+ */
+export async function createBooking(
+  vehicleTypeID: number,
+  serviceTypeID: number,
+  datetime: string
+): Promise<Booking> {
+  noStore()
+  try {
+    const subdomain = await getSubdomain()
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Business-Name': subdomain,
+      },
+      body: JSON.stringify({
+        vehicleTypeID: vehicleTypeID.toString(),
+        serviceTypeID: serviceTypeID.toString(),
+        datetime,
+      }),
+    }
+    const res = await fetch(`${apiUrl}/booking/create-booking`, options)
+    const data: Booking = await res.json()
+    return data
+  } catch (error) {
+    console.log(error)
+    throw new Error('Failed to create booking. catch')
   }
 }
