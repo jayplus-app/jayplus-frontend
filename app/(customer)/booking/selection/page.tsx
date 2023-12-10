@@ -3,6 +3,7 @@ import ServiceTypeSelection from './ServiceTypeSelection'
 import TimeSelection from './TimeSelection'
 import VehicleTypeSelection from './VehicleTypeSelection'
 import { BookingSelectionProvider } from 'context/booking-context/BookingSelectionContext'
+import ServiceCost from './ServiceCost'
 
 export default async function Page() {
   const vehicleTypes = await fetchVehicleTypes()
@@ -22,10 +23,10 @@ export default async function Page() {
       serviceTypes={serviceTypes}
     >
       <div>
-        <h1>Booking Selection</h1>
         <VehicleTypeSelection />
         <ServiceTypeSelection />
         <TimeSelection />
+        <ServiceCost />
       </div>
     </BookingSelectionProvider>
   )

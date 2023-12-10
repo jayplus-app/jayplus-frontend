@@ -4,6 +4,7 @@ import { unstable_noStore as noStore } from 'next/cache'
 import VehicleType from 'lib/interfaces/VehicleType'
 import ServiceType from 'lib/interfaces/ServiceType'
 import BookingTimeslot from 'lib/interfaces/BookingTimeslots'
+import ServiceCost from 'lib/interfaces/ServiceCost'
 
 /**
  * Fetches the vehicle types data from the server.
@@ -92,5 +93,39 @@ export async function fetchBookingTimeslots(
   } catch (error) {
     console.log(error)
     throw new Error('Failed to fetch booking timeslots data. catch')
+  }
+}
+
+/**
+ * Fetches the service cost data from the server.
+ * Includes the subdomain which is the business name in the request header.
+ * @param {string} vehicleTypeID - The ID of the vehicle type.
+ * @param {string} serviceTypeID - The ID of the service type.
+ * @returns {Promise<ServiceCost>} A promise that resolves to the service cost.
+ * @throws {Error} If there is an error while fetching the data.
+ */
+export async function fetchServiceCost(
+  vehicleTypeID: number,
+  serviceTypeID: number
+): Promise<ServiceCost> {
+  noStore()
+  try {
+    const subdomain = await getSubdomain()
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Business-Name': subdomain,
+      },
+    }
+    const res = await fetch(
+      `${apiUrl}/booking/service-cost?vehicleTypeID=${vehicleTypeID}&serviceTypeID=${serviceTypeID}`,
+      options
+    )
+    const data: ServiceCost = await res.json()
+    return data
+  } catch (error) {
+    console.log(error)
+    throw new Error('Failed to fetch service cost data. catch')
   }
 }

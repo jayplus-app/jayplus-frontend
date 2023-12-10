@@ -15,10 +15,7 @@ export default function RootLayout({
   return (
     <StyleProvider>
       <html lang='en'>
-        <body>
-          <nav>This is customer app of frontend</nav>
-          {children}
-        </body>
+        <body>{children}</body>
       </html>
     </StyleProvider>
   )
