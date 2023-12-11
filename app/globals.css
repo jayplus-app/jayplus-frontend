@@ -1,0 +1,12 @@
+:root {
+  --complementary-color-1: #b8d0c3;
+  --complementary-color-2: #527763;
+}
+
+.description-field {
+  font-size: 13px;
+  background-color: var(--complementary-color-1);
+  border: 1px solid var(--complementary-color-2);
+  border-radius: 5px;
+  padding: 15px;
+}
