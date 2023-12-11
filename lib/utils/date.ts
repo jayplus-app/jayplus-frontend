@@ -36,3 +36,28 @@ export const addDaysToDate = (inputDate: string, by: number) => {
 
   return year + '-' + month + '-' + day
 }
+
+/**
+ * Extracts date from the ISO 8601 formatted date string
+ * @param {string} datetime - An ISO 8601 formatted datetime string
+ * @returns {string} - A string representing the date in YYYY-MM-DD format
+ */
+export const extractDateFromISOString = (datetime: string) => {
+  const dateObj = new Date(datetime)
+  const year = dateObj.getUTCFullYear()
+  const month = String(dateObj.getMonth() + 1).padStart(2, '0') // Months are 0-based
+  const day = String(dateObj.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
+/**
+ * Extracts time from the ISO 8601 formatted date string
+ * @param {string} datetime - An ISO 8601 formatted date string
+ * @returns {string} - A string representing the time in HH:MM format
+ */
+export const extractTimeFromISOString = (datetime: string) => {
+  const dateObj = new Date(datetime)
+  const hours = String(dateObj.getHours()).padStart(2, '0')
+  const minutes = String(dateObj.getMinutes()).padStart(2, '0')
+  return `${hours}:${minutes}`
+}

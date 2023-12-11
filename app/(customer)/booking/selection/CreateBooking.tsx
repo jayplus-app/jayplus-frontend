@@ -2,6 +2,7 @@
 
 import { useBookingSelectionContext } from 'context/booking-context/BookingSelectionContext'
 import { createBooking } from 'lib/data/booking'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Button from 'ui/button/button'
 
@@ -9,6 +10,8 @@ export default function CreateBooking() {
   const [disabled, setDisabled] = useState<boolean>(true)
   const { selectedVehicleTypeID, selectedServiceTypeID, selectedDatetime } =
     useBookingSelectionContext()
+
+  const router = useRouter()
 
   useEffect(() => {
     if (
@@ -27,7 +30,7 @@ export default function CreateBooking() {
       selectedDatetime
     )
       .then(booking => {
-        alert(`Booking created: ${booking.id}`)
+        router.push(`/booking/payment?bookingID=${booking.id}`)
       })
       .catch(error => {
         alert(error)

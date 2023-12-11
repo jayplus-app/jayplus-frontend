@@ -9,3 +9,12 @@ export function getClientSubdomain() {
   const subdomain = hostParts[0]
   return subdomain
 }
+
+/**
+ * Gets the origin of the current window (client-side).
+ * @returns {string} The origin as a string.
+ */
+export function getClientURLOrigin() {
+  const origin = window.location.origin
+  return origin
+}

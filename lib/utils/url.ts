@@ -1,5 +1,5 @@
 import { isClientSide } from './client-server'
-import { getClientSubdomain } from './client/url'
+import { getClientURLOrigin, getClientSubdomain } from './client/url'
 import { getServerSubdomain } from './server/url'
 
 /**
@@ -13,4 +13,13 @@ export async function getSubdomain() {
     ? getClientSubdomain()
     : await getServerSubdomain()
   return subdomain
+}
+
+/**
+ * Retrieves the origin of the current client-side environment.
+ * @returns {string | null} The origin URL or null if not running in a client-side environment.
+ */
+export function getURLOrigin() {
+  const origin = isClientSide ? getClientURLOrigin() : null
+  return origin
 }
