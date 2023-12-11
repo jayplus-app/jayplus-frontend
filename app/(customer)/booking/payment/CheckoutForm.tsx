@@ -2,13 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
-import { loadStripe } from '@stripe/stripe-js'
 
-import { stripePublicKey } from 'lib/utils/env'
-import Button from 'ui/button/button'
 import { getURLOrigin } from 'lib/utils/url'
-
-const stripePromise = loadStripe(stripePublicKey || '')
+import Button from 'ui/button/button'
 
 export default function CheckoutForm({ bookingID }: { bookingID: number }) {
   const stripe = useStripe()
