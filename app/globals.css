@@ -1,12 +1,46 @@
 :root {
+  --primary-color-1: #f0f0f0;
+  --primary-color-2: #ddd;
+  --secondary-color-1: rgb(249, 207, 109);
+  --secondary-color-2: rgb(255, 169, 64);
   --complementary-color-1: #b8d0c3;
   --complementary-color-2: #527763;
 }
 
+/* Description.tsx */
 .description-field {
   font-size: 13px;
   background-color: var(--complementary-color-1);
   border: 1px solid var(--complementary-color-2);
   border-radius: 5px;
   padding: 15px;
+}
+
+/* TypeSelection.tsx */
+.type-selection {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.type-selection label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--primary-color-1);
+  border: 1px solid var(--primary-color-2);
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+}
+
+.type-selection label.checked {
+  background-color: var(--secondary-color-1);
+  border: 1px solid var(--secondary-color-2);
+}
+
+.type-selection input[type='radio'] {
+  display: none;
 }

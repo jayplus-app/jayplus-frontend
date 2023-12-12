@@ -15,9 +15,13 @@ export default function TypeSelection({
   onSelectType: (id: number) => void
 }) {
   return (
-    <div>
+    <div className='type-selection'>
       {typeList.map(type => (
-        <label key={type.id} onClick={() => onSelectType(type.id)}>
+        <label
+          key={type.id}
+          onClick={() => onSelectType(type.id)}
+          className={selectedTypeID === type.id ? 'checked' : ''}
+        >
           <input
             type='radio'
             name={name}
