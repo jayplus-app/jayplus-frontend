@@ -28,6 +28,12 @@ body {
   padding: 10px;
 }
 
+#payment-page .container {
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
 /* COMPONENTS */
 /* Description.tsx */
 .description-field {
@@ -145,4 +151,19 @@ body {
   padding: 10px;
   width: 160px;
   cursor: pointer;
+}
+
+/* InvoiceTable.tsx */
+.invoice-table {
+  background-color: var(--primary-color-1);
+  border-radius: 5px;
+  border-spacing: 10px 0;
+  padding: 20px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.invoice-table td {
+  border-bottom: 1px solid var(--primary-color-2);
+  padding: 5px 0;
+  width: 50%;
 }

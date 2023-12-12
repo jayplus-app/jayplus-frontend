@@ -24,12 +24,14 @@ export default async function Page({
   }
 
   return (
-    <div>
-      <BookingInvoice bookingInvoice={bookingInvoice} />
-      <PaymentForm
-        clientSecret={clientSecret}
-        bookingID={bookingInvoice.bookingID}
-      />
+    <div id='payment-page'>
+      <div className='container'>
+        <BookingInvoice bookingInvoice={bookingInvoice} />
+        <PaymentForm
+          clientSecret={clientSecret}
+          bookingID={bookingInvoice.bookingID}
+        />
+      </div>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import {
   extractDateFromISOString,
   extractTimeFromISOString,
 } from 'lib/utils/date'
+import { InvoiceTD, InvoiceTR, InvoiceTable } from 'ui/table/InvoiceTable'
 
 export default function BookingInvoice({
   bookingInvoice,
@@ -10,55 +11,57 @@ export default function BookingInvoice({
   bookingInvoice: BookingInvoice
 }) {
   return (
-    <div>
-      <table>
-        <tbody>
-          <tr>
-            <td>Booking Number</td>
-            <td>{bookingInvoice.bookingID}</td>
-          </tr>
-          <tr>
-            <td>Vehicle Type</td>
-            <td>{bookingInvoice.vehicleType}</td>
-          </tr>
-          <tr>
-            <td>Service Type</td>
-            <td>{bookingInvoice.serviceType}</td>
-          </tr>
-          <tr>
-            <td>Date</td>
-            <td>{extractDateFromISOString(bookingInvoice.datetime)}</td>
-          </tr>
-          <tr>
-            <td>Time</td>
-            <td>{extractTimeFromISOString(bookingInvoice.datetime)}</td>
-          </tr>
-          <tr>
-            <td>Service Cost</td>
-            <td>{bookingInvoice.serviceCost}</td>
-          </tr>
-          <tr>
-            <td>Discount</td>
-            <td>{bookingInvoice.discount}</td>
-          </tr>
-          <tr>
-            <td>Total</td>
-            <td>{bookingInvoice.total}</td>
-          </tr>
-          <tr>
-            <td>Deposit</td>
-            <td>{bookingInvoice.deposit}</td>
-          </tr>
-          <tr>
-            <td>Remaining</td>
-            <td>{bookingInvoice.remaining}</td>
-          </tr>
-          <tr>
-            <td>Status</td>
-            <td>{bookingInvoice.status}</td>
-          </tr>
-        </tbody>
-      </table>
+    <div className='booking-invoice'>
+      <InvoiceTable>
+        <InvoiceTR>
+          <InvoiceTD>Booking Number</InvoiceTD>
+          <InvoiceTD>{bookingInvoice.bookingID}</InvoiceTD>
+        </InvoiceTR>
+        <InvoiceTR>
+          <InvoiceTD>Vehicle Type</InvoiceTD>
+          <InvoiceTD>{bookingInvoice.vehicleType}</InvoiceTD>
+        </InvoiceTR>
+        <InvoiceTR>
+          <InvoiceTD>Service Type</InvoiceTD>
+          <InvoiceTD>{bookingInvoice.serviceType}</InvoiceTD>
+        </InvoiceTR>
+        <InvoiceTR>
+          <InvoiceTD>Date</InvoiceTD>
+          <InvoiceTD>
+            {extractDateFromISOString(bookingInvoice.datetime)}
+          </InvoiceTD>
+        </InvoiceTR>
+        <InvoiceTR>
+          <InvoiceTD>Time</InvoiceTD>
+          <InvoiceTD>
+            {extractTimeFromISOString(bookingInvoice.datetime)}
+          </InvoiceTD>
+        </InvoiceTR>
+        <InvoiceTR>
+          <InvoiceTD>Service Cost</InvoiceTD>
+          <InvoiceTD>{bookingInvoice.serviceCost}</InvoiceTD>
+        </InvoiceTR>
+        <InvoiceTR>
+          <InvoiceTD>Discount</InvoiceTD>
+          <InvoiceTD>{bookingInvoice.discount}</InvoiceTD>
+        </InvoiceTR>
+        <InvoiceTR>
+          <InvoiceTD>Total</InvoiceTD>
+          <InvoiceTD>{bookingInvoice.total}</InvoiceTD>
+        </InvoiceTR>
+        <InvoiceTR>
+          <InvoiceTD>Deposit</InvoiceTD>
+          <InvoiceTD>{bookingInvoice.deposit}</InvoiceTD>
+        </InvoiceTR>
+        <InvoiceTR>
+          <InvoiceTD>Remaining</InvoiceTD>
+          <InvoiceTD>{bookingInvoice.remaining}</InvoiceTD>
+        </InvoiceTR>
+        <InvoiceTR>
+          <InvoiceTD>Status</InvoiceTD>
+          <InvoiceTD>{bookingInvoice.status}</InvoiceTD>
+        </InvoiceTR>
+      </InvoiceTable>
     </div>
   )
 }
