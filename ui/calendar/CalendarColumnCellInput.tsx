@@ -10,7 +10,10 @@ export default function CalendarColumnCellInput({
   onSelectTimeslot: (datetime: string) => void
 }) {
   return (
-    <label onClick={() => onSelectTimeslot(timeslot.startTime)}>
+    <label
+      className={`calendar-column-input-cell ${active ? 'checked' : ''}`}
+      onClick={() => onSelectTimeslot(timeslot.startTime)}
+    >
       <input
         type='radio'
         name='bookingTimeslots'

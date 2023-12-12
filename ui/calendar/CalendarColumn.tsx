@@ -3,7 +3,5 @@ export default function CalendarColumn({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>{children}</div>
-  )
+  return <div className='calendar-column'>{children}</div>
 }

@@ -3,5 +3,5 @@ export default function CalendarColumnHeader({
 }: {
   children: React.ReactNode
 }) {
-  return <div style={{ textAlign: 'center' }}>{children}</div>
+  return <div className='calendar-column-header'>{children}</div>
 }

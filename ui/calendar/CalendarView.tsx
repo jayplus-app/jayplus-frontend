@@ -3,14 +3,5 @@ export default function CalendarView({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <div
-      style={{
-        display: 'flex',
-        gap: '20px',
-      }}
-    >
-      {children}
-    </div>
-  )
+  return <div className='calendar-view'>{children}</div>
 }

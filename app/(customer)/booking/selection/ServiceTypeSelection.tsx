@@ -14,7 +14,7 @@ export default function ServiceTypeSelection() {
 
   return (
     <div>
-      <h1>Service Types</h1>
+      <p>Select a service type</p>
       <TypeSelection
         name='serviceType'
         typeList={serviceTypes}

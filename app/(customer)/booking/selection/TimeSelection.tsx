@@ -87,9 +87,14 @@ export default function TimeSelection() {
 
   return (
     <div>
-      <h1>Time Selection</h1>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Button onClick={handlePreviousDay}>Prev Day</Button>
+      <p>Select appointment time</p>
+      <div className='time-selection'>
+        <Button
+          className='calendar-day-switch-button'
+          onClick={handlePreviousDay}
+        >
+          {'<'}
+        </Button>
         <CalendarView>
           {Object.entries(bookingTimeslots).map(([date, timeslots]) => (
             <CalendarColumn key={date}>
@@ -105,7 +110,9 @@ export default function TimeSelection() {
             </CalendarColumn>
           ))}
         </CalendarView>
-        <Button onClick={handleNextDay}>Next Day</Button>
+        <Button className='calendar-day-switch-button' onClick={handleNextDay}>
+          {'>'}
+        </Button>
       </div>
     </div>
   )

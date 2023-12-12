@@ -18,7 +18,7 @@ export default function VehicleTypeSelection() {
 
   return (
     <div>
-      <h2>Choose your vehicle type</h2>
+      <p>Select your vehicle type</p>
       <TypeSelection
         name='vehicleType'
         typeList={vehicleTypes}
