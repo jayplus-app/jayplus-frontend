@@ -9,7 +9,11 @@ import CalendarColumnHeader from '../../../../ui/calendar/CalendarColumnHeader'
 import CalendarView from '../../../../ui/calendar/CalendarView'
 import { useBookingSelectionContext } from 'context/booking-context/BookingSelectionContext'
 import { useStyleContext } from 'context/style-context/StyleContext'
-import { addDaysToDate, todaysDate } from 'lib/utils/date'
+import {
+  addDaysToDate,
+  formatDateToRelativeOrMMMDDForm,
+  todaysDate,
+} from 'lib/utils/date'
 import { fetchBookingTimeslots } from 'lib/data/booking'
 
 /**
@@ -98,7 +102,9 @@ export default function TimeSelection() {
         <CalendarView>
           {Object.entries(bookingTimeslots).map(([date, timeslots]) => (
             <CalendarColumn key={date}>
-              <CalendarColumnHeader>{date}</CalendarColumnHeader>
+              <CalendarColumnHeader>
+                {formatDateToRelativeOrMMMDDForm(date, todaysDate())}
+              </CalendarColumnHeader>
               {timeslots.map(timeslot => (
                 <CalendarColumnCellInput
                   key={timeslot.startTime}

@@ -15,6 +15,9 @@ body {
 
 /* PAGES */
 /* /(customer)/booking/selection/page.tsx */
+#customer #booking #selection-page {
+  margin-bottom: 96px;
+}
 #customer #booking #selection-page .footer {
   background-color: white;
   width: 100%;
@@ -90,6 +93,8 @@ body {
 .calendar-view {
   display: flex;
   gap: 10px;
+  width: 100%;
+  justify-content: center;
 }
 
 /* CalendarColumn.tsx */
@@ -97,6 +102,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
 }
 
 /* CalendarColumnHeader.tsx */

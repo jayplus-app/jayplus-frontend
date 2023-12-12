@@ -1,4 +1,5 @@
 import BookingTimeslot from 'lib/interfaces/BookingTimeslots'
+import { extractTimeFromISOString } from 'lib/utils/date'
 
 export default function CalendarColumnCellInput({
   timeslot,
@@ -21,7 +22,7 @@ export default function CalendarColumnCellInput({
         checked={active}
         readOnly
       />
-      {timeslot.startTime}
+      <span>{extractTimeFromISOString(timeslot.startTime)}</span>
     </label>
   )
 }

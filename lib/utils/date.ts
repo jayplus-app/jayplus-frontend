@@ -61,3 +61,38 @@ export const extractTimeFromISOString = (datetime: string) => {
   const minutes = String(dateObj.getMinutes()).padStart(2, '0')
   return `${hours}:${minutes}`
 }
+
+/**
+ * Formats a date to relative or MMM DD format.
+ * @param {string} date - The date to be formatted.
+ * @param {string} currentDate - The current date.
+ * @returns {string} The formatted date.
+ */
+export const formatDateToRelativeOrMMMDDForm = (
+  date: string,
+  currentDate: string
+) => {
+  if (date === currentDate) return 'Today'
+  const tomorrow = addDaysToDate(currentDate, 1)
+  if (date === tomorrow) return 'Tomorrow'
+  const dateObject = new Date(`${date}T12:00:00`)
+
+  const monthNames = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ]
+  const formattedDate = `${monthNames[dateObject.getMonth()]} ${String(
+    dateObject.getDate()
+  ).padStart(2, '0')}`
+  return formattedDate
+}
