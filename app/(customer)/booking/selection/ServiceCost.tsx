@@ -18,8 +18,10 @@ export default function ServiceCost() {
   }, [selectedVehicleTypeID, selectedServiceTypeID])
 
   return (
-    <div>
-      <div>Service Cost: {serviceCost}</div>
+    <div className='service-cost'>
+      <span>
+        Service Cost: <b>${serviceCost}</b>
+      </span>
     </div>
   )
 }

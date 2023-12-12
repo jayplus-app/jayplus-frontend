@@ -38,8 +38,12 @@ export default function CreateBooking() {
   }
 
   return (
-    <div>
-      <Button onClick={handleCreateBooking} disabled={disabled}>
+    <div className='create-booking'>
+      <Button
+        className='create-booking-button'
+        onClick={handleCreateBooking}
+        disabled={disabled}
+      >
         Book
       </Button>
     </div>

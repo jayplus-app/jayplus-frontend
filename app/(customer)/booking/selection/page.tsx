@@ -23,12 +23,14 @@ export default async function Page() {
       vehicleTypes={vehicleTypes}
       serviceTypes={serviceTypes}
     >
-      <div>
+      <div id='selection-page'>
         <VehicleTypeSelection />
         <ServiceTypeSelection />
         <TimeSelection />
-        <ServiceCost />
-        <CreateBooking />
+        <div className='footer'>
+          <ServiceCost />
+          <CreateBooking />
+        </div>
       </div>
     </BookingSelectionProvider>
   )

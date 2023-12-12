@@ -11,6 +11,21 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+/* LAYOUTS */
+
+/* PAGES */
+/* /(customer)/booking/selection/page.tsx */
+#customer #booking #selection-page .footer {
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 10px;
+}
+
+/* COMPONENTS */
 /* Description.tsx */
 .description-field {
   font-size: 13px;
@@ -113,4 +128,15 @@ body {
 
 .calendar-column-input-cell input[type='radio'] {
   display: none;
+}
+
+/* CreateBooking.tsx */
+.create-booking .create-booking-button {
+  background-color: var(--secondary-color-1);
+  border: 1px solid var(--secondary-color-2);
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px;
+  width: 160px;
+  cursor: pointer;
 }
