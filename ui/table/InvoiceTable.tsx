@@ -1,6 +1,6 @@
 export function InvoiceTable({
   children,
-  className,
+  className = '',
 }: {
   children: React.ReactNode
   className?: string

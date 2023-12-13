@@ -1,6 +1,6 @@
 export default function Description({
   children,
-  className,
+  className = '',
 }: {
   children: React.ReactNode
   className?: string

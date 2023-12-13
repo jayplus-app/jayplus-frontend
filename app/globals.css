@@ -60,6 +60,37 @@ body {
   border: 1px solid var(--secondary-color-2);
 }
 
+/* /(customer)/booking/payment-success/page.tsx */
+#customer #booking #payment-success-page .container {
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+#customer #booking #payment-success-page #title {
+  color: var(--complementary-color-2);
+  text-align: center;
+}
+
+#customer #booking #payment-success-page .back-to-booking {
+  text-align: center;
+}
+
+#customer #booking #payment-success-page .back-to-booking-button {
+  background-color: var(--secondary-color-1);
+  border: 1px solid var(--secondary-color-1);
+  border-radius: 5px;
+  padding: 10px;
+  width: 160px;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+#customer #booking #payment-success-page .back-to-booking-button:hover {
+  background-color: var(--secondary-color-2);
+  border: 1px solid var(--secondary-color-2);
+}
+
 /* COMPONENTS */
 /* Description.tsx */
 .description-field {
