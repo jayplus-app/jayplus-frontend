@@ -97,14 +97,15 @@ export default function TimeSelection() {
         <Button
           className='calendar-day-switch-button'
           onClick={handlePreviousDay}
+          disabled={calendarStartDate <= todaysDate()}
         >
-          {'<'}
+          <b>{'<'}</b>
         </Button>
         <CalendarView>
           {Object.entries(bookingTimeslots).map(([date, timeslots]) => (
             <CalendarColumn key={date}>
               <CalendarColumnHeader>
-                {formatDateToRelativeOrMMMDDForm(date, todaysDate())}
+                <b>{formatDateToRelativeOrMMMDDForm(date, todaysDate())}</b>
               </CalendarColumnHeader>
               {timeslots.map(timeslot => (
                 <CalendarColumnCellInput
@@ -118,7 +119,7 @@ export default function TimeSelection() {
           ))}
         </CalendarView>
         <Button className='calendar-day-switch-button' onClick={handleNextDay}>
-          {'>'}
+          <b>{'>'}</b>
         </Button>
       </div>
     </div>

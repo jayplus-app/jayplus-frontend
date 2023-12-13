@@ -95,6 +95,10 @@ body {
   cursor: pointer;
 }
 
+.time-selection .calendar-day-switch-button:disabled {
+  cursor: not-allowed;
+}
+
 /* CalendarView.tsx */
 .calendar-view {
   display: flex;
