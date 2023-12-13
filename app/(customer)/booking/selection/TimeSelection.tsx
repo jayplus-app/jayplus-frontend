@@ -1,3 +1,8 @@
+// TODO:
+// - Add dynamic numCols based on the widthMode
+// - Add loading state
+// - Add error state
+
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
@@ -8,7 +13,7 @@ import CalendarColumn from '../../../../ui/calendar/CalendarColumn'
 import CalendarColumnHeader from '../../../../ui/calendar/CalendarColumnHeader'
 import CalendarView from '../../../../ui/calendar/CalendarView'
 import { useBookingSelectionContext } from 'context/booking-context/BookingSelectionContext'
-import { useStyleContext } from 'context/style-context/StyleContext'
+// import { useStyleContext } from 'context/style-context/StyleContext'
 import {
   addDaysToDate,
   formatDateToRelativeOrMMMDDForm,
@@ -21,7 +26,7 @@ import { fetchBookingTimeslots } from 'lib/data/booking'
  * Allows user to view booking timeslots and select a timeslot.
  */
 export default function TimeSelection() {
-  const { widthMode } = useStyleContext()
+  // const { widthMode } = useStyleContext()
   const {
     selectedVehicleTypeID,
     selectedServiceTypeID,
@@ -57,7 +62,8 @@ export default function TimeSelection() {
   )
 
   useEffect(() => {
-    const numCols = widthMode === 'sm' ? 3 : 5
+    // const numCols = widthMode === 'sm' ? 3 : 5
+    const numCols = 3
 
     const dates = Array.from({ length: numCols }, (_, i) =>
       addDaysToDate(calendarStartDate, i)
@@ -70,12 +76,7 @@ export default function TimeSelection() {
         )
       }
     })
-  }, [
-    calendarStartDate,
-    selectedVehicleTypeID,
-    selectedServiceTypeID,
-    widthMode,
-  ])
+  }, [calendarStartDate, selectedVehicleTypeID, selectedServiceTypeID])
 
   const handleSelectTimeslot = (datetime: string) => {
     setSelectedDatetime(datetime)
