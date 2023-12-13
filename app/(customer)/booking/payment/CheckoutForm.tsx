@@ -82,7 +82,7 @@ export default function CheckoutForm({ bookingID }: { bookingID: number }) {
               loading
             </div>
           ) : (
-            'Pay now'
+            'Pay Now'
           )}
         </span>
       </Button>

@@ -35,6 +35,31 @@ body {
   margin: 0 auto;
 }
 
+#payment-page #payment-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#payment-page #payment-form #payment-element {
+  width: 100%;
+}
+
+#payment-page #payment-form #submit {
+  background-color: var(--secondary-color-1);
+  border: 1px solid var(--secondary-color-1);
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px;
+  width: 160px;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+#payment-page #payment-form #submit:hover {
+  background-color: var(--secondary-color-2);
+  border: 1px solid var(--secondary-color-2);
+}
+
 /* COMPONENTS */
 /* Description.tsx */
 .description-field {
@@ -170,12 +195,12 @@ body {
   opacity: 0.3;
 }
 
-.calendar-column-input-cell input[type='radio'] {
-  display: none;
+.calendar-column-input-cell.disabled:hover {
+  border: 1px solid var(--primary-color-2);
 }
 
-.calendar-column-input-cell input[type='radio']:disabled {
-  cursor: not-allowed;
+.calendar-column-input-cell input[type='radio'] {
+  display: none;
 }
 
 /* CreateBooking.tsx */
