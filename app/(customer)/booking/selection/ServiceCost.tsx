@@ -2,6 +2,7 @@
 
 import { useBookingSelectionContext } from 'context/booking-context/BookingSelectionContext'
 import { fetchServiceCost } from 'lib/data/booking'
+import { formatPriceFromCentsToDollarsString } from 'lib/utils/price'
 import { useEffect, useState } from 'react'
 
 export default function ServiceCost() {
@@ -20,7 +21,7 @@ export default function ServiceCost() {
   return (
     <div className='service-cost'>
       <span>
-        Service Cost: <b>${serviceCost}</b>
+        Service Cost: <b>${formatPriceFromCentsToDollarsString(serviceCost)}</b>
       </span>
     </div>
   )
