@@ -33,9 +33,7 @@ export default function TimeSelection() {
     selectedDatetime,
     setSelectedDatetime,
   } = useBookingSelectionContext()
-  const [calendarStartDate, setCalendarStartDate] = useState(
-    addDaysToDate(todaysDate(), -1)
-  )
+  const [calendarStartDate, setCalendarStartDate] = useState(todaysDate())
   const [bookingTimeslots, setBookingTimeslots] = useState<{
     [date: string]: BookingTimeslot[]
   }>({})
