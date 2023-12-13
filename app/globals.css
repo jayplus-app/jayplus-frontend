@@ -1,6 +1,7 @@
 :root {
   --primary-color-1: #f0f0f0;
   --primary-color-2: #ddd;
+  --primary-color-3: #ccc;
   --secondary-color-1: rgb(249, 207, 109);
   --secondary-color-2: rgb(255, 169, 64);
   --complementary-color-1: #b8d0c3;
@@ -57,17 +58,23 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary-color-1);
+  background-color: var(--primary-color-2);
   border: 1px solid var(--primary-color-2);
   border-radius: 5px;
   padding: 10px;
   width: 100%;
   cursor: pointer;
+  transition: 200ms;
+}
+
+.type-selection label:hover {
+  background-color: var(--secondary-color-1);
+  border: 1px solid var(--secondary-color-1);
 }
 
 .type-selection label.checked {
   background-color: var(--secondary-color-1);
-  border: 1px solid var(--secondary-color-2);
+  border: 1px solid var(--secondary-color-1);
 }
 
 .type-selection input[type='radio'] {
@@ -93,10 +100,19 @@ body {
   border: 1px solid var(--primary-color-2);
   border-radius: 5px;
   cursor: pointer;
+  transition: 200ms;
+}
+
+.time-selection .calendar-day-switch-button:hover {
+  background-color: var(--primary-color-2);
 }
 
 .time-selection .calendar-day-switch-button:disabled {
   cursor: not-allowed;
+}
+
+.time-selection .calendar-day-switch-button:disabled:hover {
+  background-color: var(--primary-color-1);
 }
 
 /* CalendarView.tsx */
@@ -130,31 +146,65 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary-color-1);
+  background-color: var(--primary-color-2);
   border: 1px solid var(--primary-color-2);
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
+  transition: 200ms;
+}
+
+.calendar-column-input-cell:hover {
+  background-color: var(--secondary-color-1);
+  border: 1px solid var(--secondary-color-1);
 }
 
 .calendar-column-input-cell.checked {
   background-color: var(--secondary-color-1);
-  border: 1px solid var(--secondary-color-2);
+  border: 1px solid var(--secondary-color-1);
+}
+
+.calendar-column-input-cell.disabled {
+  cursor: not-allowed;
+  background-color: var(--primary-color-2);
+  opacity: 0.3;
 }
 
 .calendar-column-input-cell input[type='radio'] {
   display: none;
 }
 
+.calendar-column-input-cell input[type='radio']:disabled {
+  cursor: not-allowed;
+}
+
 /* CreateBooking.tsx */
 .create-booking .create-booking-button {
   background-color: var(--secondary-color-1);
-  border: 1px solid var(--secondary-color-2);
+  border: 1px solid var(--secondary-color-1);
   border-radius: 5px;
   margin-top: 10px;
   padding: 10px;
   width: 160px;
   cursor: pointer;
+  transition: 200ms;
+}
+
+.create-booking .create-booking-button:disabled {
+  cursor: not-allowed;
+  background-color: var(--primary-color-3);
+  border: 1px solid var(--primary-color-3);
+  opacity: 0.6;
+}
+
+.create-booking .create-booking-button:disabled:hover {
+  background-color: var(--primary-color-3);
+  border: 1px solid var(--primary-color-3);
+}
+
+.create-booking .create-booking-button:hover {
+  background-color: var(--secondary-color-2);
+  border: 1px solid var(--secondary-color-2);
 }
 
 /* InvoiceTable.tsx */

@@ -20,6 +20,8 @@ export default function CreateBooking() {
       selectedDatetime !== ''
     ) {
       setDisabled(false)
+    } else {
+      setDisabled(true)
     }
   }, [selectedVehicleTypeID, selectedServiceTypeID, selectedDatetime])
 

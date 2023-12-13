@@ -33,7 +33,9 @@ export default function TimeSelection() {
     selectedDatetime,
     setSelectedDatetime,
   } = useBookingSelectionContext()
-  const [calendarStartDate, setCalendarStartDate] = useState(todaysDate())
+  const [calendarStartDate, setCalendarStartDate] = useState(
+    addDaysToDate(todaysDate(), -1)
+  )
   const [bookingTimeslots, setBookingTimeslots] = useState<{
     [date: string]: BookingTimeslot[]
   }>({})
@@ -76,6 +78,8 @@ export default function TimeSelection() {
         )
       }
     })
+
+    setSelectedDatetime('')
   }, [calendarStartDate, selectedVehicleTypeID, selectedServiceTypeID])
 
   const handleSelectTimeslot = (datetime: string) => {
@@ -112,6 +116,7 @@ export default function TimeSelection() {
                   key={timeslot.startTime}
                   timeslot={timeslot}
                   active={timeslot.startTime === selectedDatetime}
+                  disabled={timeslot.available !== true}
                   onSelectTimeslot={handleSelectTimeslot}
                 />
               ))}
