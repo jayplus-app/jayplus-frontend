@@ -30,7 +30,6 @@ export async function fetchVehicleTypes(): Promise<VehicleType[]> {
     const data: VehicleType[] = await res.json()
     return data
   } catch (error) {
-    console.log(error)
     throw new Error('Failed to fetch vehicle types data. catch')
   }
 }
@@ -56,7 +55,6 @@ export async function fetchServiceTypes(): Promise<ServiceType[]> {
     const data: ServiceType[] = await res.json()
     return data
   } catch (error) {
-    console.log(error)
     throw new Error('Failed to fetch service types data. catch')
   }
 }
@@ -92,7 +90,6 @@ export async function fetchBookingTimeslots(
     const data: BookingTimeslot[] = await res.json()
     return data
   } catch (error) {
-    console.log(error)
     throw new Error('Failed to fetch booking timeslots data. catch')
   }
 }
@@ -126,7 +123,6 @@ export async function fetchServiceCost(
     const data: ServiceCost = await res.json()
     return data
   } catch (error) {
-    console.log(error)
     throw new Error('Failed to fetch service cost data. catch')
   }
 }
@@ -164,7 +160,6 @@ export async function createBooking(
     const data: Booking = await res.json()
     return data
   } catch (error) {
-    console.log(error)
     throw new Error('Failed to create booking. catch')
   }
 }

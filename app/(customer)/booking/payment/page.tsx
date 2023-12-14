@@ -19,10 +19,6 @@ export default async function Page({
   const { bookingInvoice, clientSecret } =
     await createPaymentIntent(bookingIDInt)
 
-  if (bookingInvoice.status !== 'pending') {
-    redirect(`/booking`)
-  }
-
   return (
     <div id='payment-page'>
       <div className='container'>

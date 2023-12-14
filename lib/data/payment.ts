@@ -28,13 +28,19 @@ export async function createPaymentIntent(
         bookingNumber,
       }),
     }
+
     const res = await fetch(`${apiUrl}/payment/create-payment-intent`, options)
-    const data: { bookingInvoice: BookingInvoice; clientSecret: string } =
-      await res.json()
-    return data
+    const data = await res.json()
+    if (data.error) {
+      throw new Error(data.message)
+    }
+
+    return {
+      bookingInvoice: data.bookingInvoice,
+      clientSecret: data.clientSecret,
+    }
   } catch (error) {
-    console.log(error)
-    throw new Error('Failed to create payment intent. catch')
+    throw error
   }
 }
 
@@ -65,7 +71,6 @@ export async function fetchBookingReceipt(
     const data: BookingReceipt = await res.json()
     return data
   } catch (error) {
-    console.log(error)
     throw new Error('Failed to fetch booking receipt data. catch')
   }
 }
