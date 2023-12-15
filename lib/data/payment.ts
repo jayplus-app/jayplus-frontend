@@ -31,6 +31,7 @@ export async function createPaymentIntent(
 
     const res = await fetch(`${apiUrl}/payment/create-payment-intent`, options)
     const data = await res.json()
+
     if (data.error) {
       throw new Error(data.message)
     }
@@ -64,13 +65,21 @@ export async function fetchBookingReceipt(
         'Business-Name': subdomain,
       },
     }
+
+    await new Promise(resolve => setTimeout(resolve, 1500))
+
     const res = await fetch(
       `${apiUrl}/payment/booking-receipt/${bookingID}`,
       options
     )
-    const data: BookingReceipt = await res.json()
-    return data
+    const data = await res.json()
+
+    if (data.error) {
+      throw new Error(data.message)
+    }
+
+    return data as BookingReceipt
   } catch (error) {
-    throw new Error('Failed to fetch booking receipt data. catch')
+    throw error
   }
 }

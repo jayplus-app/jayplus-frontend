@@ -1,0 +1,12 @@
+Todos:
+1 - TimeSelection.tsx:
+    - Add dynamic numCols based on the widthMode
+    - Add loading state
+    - Add error state
+
+2 - Fix booking/payment error page style
+
+3 - Fix payment receipt page reading pending the first time
+    - (Current) solution: 1.5 seconds Delay to the request.
+    - Long term potential solution: generate a receipt based on what stripe returns.
+    - FIND A BETTER LONG TERM SOLUTION

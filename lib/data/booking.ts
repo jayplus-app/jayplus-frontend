@@ -27,10 +27,15 @@ export async function fetchVehicleTypes(): Promise<VehicleType[]> {
     }
 
     const res = await fetch(`${apiUrl}/booking/vehicle-types`, options)
-    const data: VehicleType[] = await res.json()
-    return data
+    const data = await res.json()
+
+    if (data.error) {
+      throw new Error(data.message)
+    }
+
+    return data as VehicleType[]
   } catch (error) {
-    throw new Error('Failed to fetch vehicle types data. catch')
+    throw error
   }
 }
 
@@ -52,10 +57,15 @@ export async function fetchServiceTypes(): Promise<ServiceType[]> {
       },
     }
     const res = await fetch(`${apiUrl}/booking/service-types`, options)
-    const data: ServiceType[] = await res.json()
-    return data
+    const data = await res.json()
+
+    if (data.error) {
+      throw new Error(data.message)
+    }
+
+    return data as ServiceType[]
   } catch (error) {
-    throw new Error('Failed to fetch service types data. catch')
+    throw error
   }
 }
 
@@ -87,10 +97,15 @@ export async function fetchBookingTimeslots(
       `${apiUrl}/booking/timeslots?date=${date}&vehicleTypeID=${vehicleTypeID}&serviceTypeID=${serviceTypeID}`,
       options
     )
-    const data: BookingTimeslot[] = await res.json()
-    return data
+    const data = await res.json()
+
+    if (data.error) {
+      throw new Error(data.message)
+    }
+
+    return data as BookingTimeslot[]
   } catch (error) {
-    throw new Error('Failed to fetch booking timeslots data. catch')
+    throw error
   }
 }
 
@@ -120,10 +135,15 @@ export async function fetchServiceCost(
       `${apiUrl}/booking/service-cost?vehicleTypeID=${vehicleTypeID}&serviceTypeID=${serviceTypeID}`,
       options
     )
-    const data: ServiceCost = await res.json()
-    return data
+    const data = await res.json()
+
+    if (data.error) {
+      throw new Error(data.message)
+    }
+
+    return data as ServiceCost
   } catch (error) {
-    throw new Error('Failed to fetch service cost data. catch')
+    throw error
   }
 }
 
@@ -157,9 +177,14 @@ export async function createBooking(
       }),
     }
     const res = await fetch(`${apiUrl}/booking/create-booking`, options)
-    const data: Booking = await res.json()
-    return data
+    const data = await res.json()
+
+    if (data.error) {
+      throw new Error(data.message)
+    }
+
+    return data as Booking
   } catch (error) {
-    throw new Error('Failed to create booking. catch')
+    throw error
   }
 }
