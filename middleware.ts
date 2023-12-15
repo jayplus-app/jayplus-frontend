@@ -7,8 +7,7 @@ export function middleware(request: NextRequest) {
 
     if (
       request.nextUrl.pathname === '/admin' ||
-      request.nextUrl.pathname === '/admin/login' ||
-      request.nextUrl.pathname === '/admin/sign-up'
+      request.nextUrl.pathname === '/admin/login'
     ) {
       if (is_admin) {
         return NextResponse.redirect(
@@ -18,10 +17,7 @@ export function middleware(request: NextRequest) {
     }
 
     if (!is_admin) {
-      if (
-        request.nextUrl.pathname !== '/admin/login' &&
-        request.nextUrl.pathname !== '/admin/sign-up'
-      ) {
+      if (request.nextUrl.pathname !== '/admin/login') {
         return NextResponse.redirect(new URL('/admin/login', request.nextUrl))
       }
     }

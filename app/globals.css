@@ -27,23 +27,6 @@ body#admin {
   background-color: var(--complementary-color-2);
 }
 
-#admin-auth-layout #admin-auth-card #auth-page-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-#admin-auth-layout #admin-auth-card #auth-page-links a {
-  text-decoration: none;
-  color: black;
-  transition: 200ms;
-}
-
-#admin-auth-layout #admin-auth-card #auth-page-links a:hover {
-  font-weight: bold;
-}
-
 /* PAGES */
 /* /(customer)/booking/selection/page.tsx */
 #customer #booking #selection-page {
