@@ -13,10 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>
-        <nav>This is Admin app of frontend</nav>
-        {children}
-      </body>
+      <body id='admin'>{children}</body>
     </html>
   )
 }

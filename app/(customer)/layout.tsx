@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <StyleProvider>
-      <html lang='en'>
+      <html>
         <body id='customer'>{children}</body>
       </html>
     </StyleProvider>
