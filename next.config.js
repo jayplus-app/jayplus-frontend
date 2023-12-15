@@ -7,6 +7,11 @@ const nextConfig = {
         destination: '/booking/selection',
         permanent: true,
       },
+      {
+        source: '/booking',
+        destination: '/booking/selection',
+        permanent: true,
+      },
     ]
   },
 }
