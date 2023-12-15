@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='en'>
+    <html>
       <body>
         <nav>This is Admin app of frontend</nav>
         {children}
