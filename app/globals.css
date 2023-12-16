@@ -5,7 +5,8 @@
   --secondary-color-1: rgb(249, 207, 109);
   --secondary-color-2: rgb(255, 169, 64);
   --complementary-color-1: #b8d0c3;
-  --complementary-color-2: #527763;
+  --complementary-color-2: #8fa69e;
+  --complementary-color-3: #527763;
 }
 
 body {
@@ -36,7 +37,7 @@ body#admin {
   flex-direction: column;
   justify-content: center;
   height: 100svh;
-  background-color: var(--complementary-color-2);
+  background-color: var(--complementary-color-3);
 }
 
 /* PAGES */
@@ -93,7 +94,7 @@ body#admin {
 }
 
 #customer #booking #payment-success-page #title {
-  color: var(--complementary-color-2);
+  color: var(--complementary-color-3);
   text-align: center;
 }
 
@@ -169,7 +170,7 @@ body#admin {
 .description-field {
   font-size: 13px;
   background-color: var(--complementary-color-1);
-  border: 1px solid var(--complementary-color-2);
+  border: 1px solid var(--complementary-color-3);
   border-radius: 5px;
   padding: 15px;
 }
@@ -431,9 +432,15 @@ body#admin {
   justify-content: center;
   align-items: center;
   gap: 5px;
+  transition: 200ms;
 
   @media (min-width: 768px) {
     width: auto;
     justify-content: flex-start;
   }
+}
+
+.nav-link.active,
+.nav-link:hover {
+  background-color: var(--complementary-color-3);
 }
