@@ -27,7 +27,7 @@ export default async function Page() {
         <VehicleTypeSelection />
         <ServiceTypeSelection />
         <TimeSelection />
-        <div className='footer'>
+        <div id='footer'>
           <ServiceCost />
           <CreateBooking />
         </div>

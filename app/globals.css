@@ -30,6 +30,9 @@ body#admin {
 
 /* LAYOUTS */
 /* /(admin)/layout.tsx */
+#admin #content {
+  width: 100%;
+}
 
 /* /(auth)/layout.tsx */
 #auth-layout #auth-card {
@@ -45,12 +48,10 @@ body#admin {
 #customer #booking #selection-page {
   margin-bottom: 96px;
 }
-#customer #booking #selection-page .footer {
+#customer #booking #selection-page #footer {
   background-color: white;
-  width: 100%;
   text-align: center;
-  position: fixed;
-  left: 0;
+  position: sticky;
   bottom: 0;
   padding: 10px;
 }
@@ -165,6 +166,18 @@ body#admin {
   border: 1px solid var(--secondary-color-2);
 }
 
+#admin #add-booking-page {
+  margin: 8px;
+}
+
+#admin #add-booking-page #footer {
+  background-color: white;
+  text-align: center;
+  position: sticky;
+  bottom: 0;
+  padding: 10px;
+}
+
 /* COMPONENTS */
 /* Description.tsx */
 .description-field {
@@ -212,14 +225,14 @@ body#admin {
 }
 
 /* TimeSelection.tsx */
-.time-selection {
+#time-selection {
   display: flex;
   justify-content: space-between;
   gap: 10px;
   margin: 10px 0;
 }
 
-.time-selection .calendar-day-switch-button {
+#time-selection .calendar-day-switch-button {
   height: 40px;
   width: 20px;
   display: flex;
@@ -233,15 +246,15 @@ body#admin {
   transition: 200ms;
 }
 
-.time-selection .calendar-day-switch-button:hover {
+#time-selection .calendar-day-switch-button:hover {
   background-color: var(--primary-color-2);
 }
 
-.time-selection .calendar-day-switch-button:disabled {
+#time-selection .calendar-day-switch-button:disabled {
   cursor: not-allowed;
 }
 
-.time-selection .calendar-day-switch-button:disabled:hover {
+#time-selection .calendar-day-switch-button:disabled:hover {
   background-color: var(--primary-color-1);
 }
 
@@ -309,7 +322,7 @@ body#admin {
 }
 
 /* CreateBooking.tsx */
-.create-booking .create-booking-button {
+#create-booking #create-booking-button {
   background-color: var(--secondary-color-1);
   border: 1px solid var(--secondary-color-1);
   border-radius: 5px;
@@ -320,19 +333,19 @@ body#admin {
   transition: 200ms;
 }
 
-.create-booking .create-booking-button:disabled {
+#create-booking #create-booking-button:disabled {
   cursor: not-allowed;
   background-color: var(--primary-color-3);
   border: 1px solid var(--primary-color-3);
   opacity: 0.6;
 }
 
-.create-booking .create-booking-button:disabled:hover {
+#create-booking #create-booking-button:disabled:hover {
   background-color: var(--primary-color-3);
   border: 1px solid var(--primary-color-3);
 }
 
-.create-booking .create-booking-button:hover {
+#create-booking #create-booking-button:hover {
   background-color: var(--secondary-color-2);
   border: 1px solid var(--secondary-color-2);
 }

@@ -6,13 +6,8 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import Button from 'ui/button/button'
-import BookingTimeslot from 'lib/interfaces/BookingTimeslots'
-import CalendarColumnCellInput from '../../../../ui/calendar/CalendarColumnCellInput'
-import CalendarColumn from '../../../../ui/calendar/CalendarColumn'
-import CalendarColumnHeader from '../../../../ui/calendar/CalendarColumnHeader'
-import CalendarView from '../../../../ui/calendar/CalendarView'
 import { useBookingSelectionContext } from 'context/booking-context/BookingSelectionContext'
+import BookingTimeslot from 'lib/interfaces/BookingTimeslots'
 // import { useStyleContext } from 'context/style-context/StyleContext'
 import {
   addDaysToDate,
@@ -20,11 +15,12 @@ import {
   todaysDate,
 } from 'lib/utils/date'
 import { fetchBookingTimeslots } from 'lib/data/booking'
+import Button from 'ui/button/button'
+import CalendarView from 'ui/calendar/CalendarView'
+import CalendarColumn from 'ui/calendar/CalendarColumn'
+import CalendarColumnHeader from 'ui/calendar/CalendarColumnHeader'
+import CalendarColumnCellInput from 'ui/calendar/CalendarColumnCellInput'
 
-/**
- * Component for selecting a time.
- * Allows user to view booking timeslots and select a timeslot.
- */
 export default function TimeSelection() {
   // const { widthMode } = useStyleContext()
   const {
@@ -38,11 +34,6 @@ export default function TimeSelection() {
     [date: string]: BookingTimeslot[]
   }>({})
 
-  /**
-   * Fetches booking timeslots for given dates.
-   * @param {string[]} dates - The dates for which to fetch timeslots.
-   * @returns {Promise<BookingTimeslot[][]>} Promise resolving to array of booking timeslots.
-   */
   const fetchTimeslots = useCallback(
     async (dates: string[]) => {
       try {
