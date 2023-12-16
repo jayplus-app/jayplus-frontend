@@ -1,9 +1,8 @@
-import type { Metadata } from 'next'
+import { Metadata } from 'next'
 import '../globals.css'
-import SideNav from 'ui/navigation/sidenav'
 
 export const metadata: Metadata = {
-  title: 'JayPlus Customer App',
+  title: 'JayPlus Auth App',
   description: 'Some Description',
 }
 
@@ -14,11 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body id='admin'>
-        <div id='navbar'>
-          <SideNav />
+      <body id='auth'>
+        <div id='auth-layout'>
+          <div id='auth-card'>{children}</div>
         </div>
-        <div id='content'>{children}</div>
       </body>
     </html>
   )
