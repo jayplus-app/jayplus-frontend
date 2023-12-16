@@ -1,12 +1,11 @@
 import BookingReceipt from 'lib/interfaces/BookingReceipt'
-
-import { InvoiceTD, InvoiceTR, InvoiceTable } from 'ui/table/InvoiceTable'
 import {
   extractDateFromISOString,
   extractTimeFromISOString,
 } from 'lib/utils/date'
+import { InvoiceTD, InvoiceTR, InvoiceTable } from 'ui/table/InvoiceTable'
 
-export default function bookingReceipt({
+export default function BookingReceipt({
   bookingReceipt,
 }: {
   bookingReceipt: BookingReceipt

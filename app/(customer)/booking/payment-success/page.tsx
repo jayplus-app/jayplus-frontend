@@ -1,9 +1,11 @@
-import { fetchBookingReceipt } from 'lib/data/payment'
-import BookingReceipt from './BookingReceipt'
-import Button from 'ui/button/button'
 import Link from 'next/link'
 
-export default async function Page({
+import { fetchBookingReceipt } from 'lib/data/payment'
+import Button from 'ui/button/button'
+
+import BookingReceipt from './booking-receipt'
+
+export default async function PaymentSuccessPage({
   searchParams,
 }: {
   searchParams?: {

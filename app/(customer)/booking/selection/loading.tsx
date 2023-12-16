@@ -1,3 +1,3 @@
-export default function Loading() {
-  return <div>Loading...</div>
+export default function SelectionPageLoading() {
+  return <div id='selection-page-loading'>Loading...</div>
 }

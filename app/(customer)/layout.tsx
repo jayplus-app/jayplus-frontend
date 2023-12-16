@@ -3,8 +3,8 @@ import '../globals.css'
 import { StyleProvider } from 'context/style-context/StyleContext'
 
 export const metadata: Metadata = {
-  title: 'JayPlus Customer App',
-  description: 'Some Description',
+  title: 'JayPlus Booking App',
+  description: 'The frontend for the JayPlus Customer App',
 }
 
 export default function RootLayout({

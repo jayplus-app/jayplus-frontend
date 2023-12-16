@@ -1,9 +1,9 @@
 import { createPaymentIntent } from 'lib/data/payment'
-import PaymentForm from './PaymentForm'
-import BookingInvoice from './BookingInvoice'
-import { redirect } from 'next/navigation'
 
-export default async function Page({
+import BookingInvoice from './booking-invoice'
+import PaymentForm from './payment-form'
+
+export default async function PaymentPage({
   searchParams,
 }: {
   searchParams?: {

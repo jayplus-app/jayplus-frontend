@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+
 import { useBookingSelectionContext } from 'context/booking-context/BookingSelectionContext'
 import { fetchServiceCost } from 'lib/data/booking'
 import { formatPriceFromCentsToDollarsString } from 'lib/utils/price'

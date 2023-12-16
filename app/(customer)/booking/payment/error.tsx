@@ -1,9 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+
 import Button from 'ui/button/button'
 
-export default function Error({
+export default function PaymentPageError({
   error,
 }: {
   error: Error & { digest?: string }

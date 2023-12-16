@@ -1,3 +1,7 @@
-export default function layout({ children }: { children: React.ReactNode }) {
+export default function BookingLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return <div id='booking'>{children}</div>
 }

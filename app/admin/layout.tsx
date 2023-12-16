@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
+
 import '../globals.css'
 import SideNav from 'ui/navigation/sidenav'
 
 export const metadata: Metadata = {
-  title: 'JayPlus Customer App',
-  description: 'Some Description',
+  title: 'JayPlus Admin App',
+  description: 'The frontend for the JayPlus Admin App',
 }
 
 export default function RootLayout({

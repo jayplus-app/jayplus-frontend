@@ -1,8 +1,8 @@
 'use client'
 
-import Description from 'ui/text-field/Description'
 import { useBookingSelectionContext } from 'context/booking-context/BookingSelectionContext'
 import TypeSelection from 'ui/selection/TypeSelection'
+import Description from 'ui/text-field/Description'
 
 export default function ServiceTypeSelection() {
   const { serviceTypes, selectedServiceTypeID, setSelectedServiceTypeID } =

@@ -6,6 +6,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+
 import { useBookingSelectionContext } from 'context/booking-context/BookingSelectionContext'
 import BookingTimeslot from 'lib/interfaces/BookingTimeslots'
 // import { useStyleContext } from 'context/style-context/StyleContext'

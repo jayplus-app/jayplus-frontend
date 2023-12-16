@@ -3,8 +3,9 @@
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
 
-import CheckoutForm from './CheckoutForm'
 import { stripePublicKey } from 'lib/utils/env'
+
+import CheckoutForm from './checkout-form'
 
 const stripePromise = loadStripe(stripePublicKey || '')
 
