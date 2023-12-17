@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 
 import '../globals.css'
-import SideNav from 'ui/navigation/sidenav'
+import Navbar from 'ui/navigation/navbar'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 export const metadata: Metadata = {
   title: 'JayPlus Admin App',
@@ -17,7 +19,7 @@ export default function RootLayout({
     <html>
       <body id='admin'>
         <div id='navbar'>
-          <SideNav />
+          <Navbar />
         </div>
         <div id='content'>{children}</div>
       </body>
