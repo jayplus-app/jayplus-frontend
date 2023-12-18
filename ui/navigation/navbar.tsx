@@ -2,7 +2,7 @@ import { MdLogout } from 'react-icons/md'
 import NavLinks from './nav-links'
 import { logout } from 'lib/data/auth'
 
-export default function Navbar() {
+export default async function Navbar() {
   const handleLogout = logout.bind(null, '/login')
 
   return (
