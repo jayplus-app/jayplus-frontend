@@ -1,12 +1,19 @@
 'use client'
+
 import { logout } from 'lib/data/auth'
 import { MdLogout } from 'react-icons/md'
+import { useRouter } from 'next/navigation'
 
 export default function LogoutButton() {
+  const router = useRouter()
   const handleLogout = () => {
-    logout('/login').catch(error => {
-      alert(error)
-    })
+    logout()
+      .then(() => {
+        router.push('/login')
+      })
+      .catch(error => {
+        alert(error)
+      })
   }
 
   return (

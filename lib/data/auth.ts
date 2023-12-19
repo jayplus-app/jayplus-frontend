@@ -41,12 +41,12 @@ export async function login(redirectPath: string, formData: FormData) {
   }
 }
 
-export async function logout(redirectPath: string) {
+export async function logout() {
   try {
     cookies().delete('access_token')
     cookies().delete('refresh_token')
 
-    redirect(redirectPath)
+    return Promise.resolve()
   } catch (error) {
     throw error
   }
