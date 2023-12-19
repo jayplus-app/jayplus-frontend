@@ -2,10 +2,9 @@
 
 import { cookies } from 'next/headers'
 import { apiUrl } from 'lib/utils/env'
-import { redirect } from 'next/navigation'
 import { getSubdomain } from 'lib/utils/url'
 
-export async function login(redirectPath: string, formData: FormData) {
+export async function login(prevState: any, formData: FormData) {
   const email = formData.get('email')
   const password = formData.get('password')
 
@@ -21,11 +20,13 @@ export async function login(redirectPath: string, formData: FormData) {
       credentials: 'include',
     })
 
-    if (!res.ok) {
-      throw new Error('Login failed')
-    }
-
     const data = await res.json()
+
+    if (!res.ok) {
+      return data.message
+        ? { errorMessage: data.message }
+        : { errorMessage: 'An error happened' }
+    }
 
     cookies().set('access_token', data.access_token.token, {
       maxAge: data.access_token.expiry_seconds,
@@ -35,9 +36,13 @@ export async function login(redirectPath: string, formData: FormData) {
       maxAge: data.refresh_token.expiry_seconds,
     })
 
-    redirect(redirectPath)
+    return {
+      success: true,
+    }
   } catch (error) {
-    throw error
+    return {
+      errorMessage: 'Some Error Happened',
+    }
   }
 }
 

@@ -1,12 +1,25 @@
-'use server'
+'use client'
+
 import { login } from 'lib/data/auth'
+import { useFormState } from 'react-dom'
 import Button from 'ui/button/button'
 
-export default async function LoginPage() {
-  const handleLogin = login.bind(null, '/admin')
+export default function LoginPage() {
+  const [formState, dispatch] = useFormState(login, {
+    errorMessage: '',
+    success: false,
+  })
+
+  if (formState.success) {
+    window.location.href = '/admin'
+  }
+
   return (
     <div id='admin-login-page'>
-      <form id='login-form' action={handleLogin}>
+      <form id='login-form' action={dispatch}>
+        {!formState.success && formState?.errorMessage && (
+          <div className='error-message'>{formState.errorMessage}</div>
+        )}
         <div className='form-group'>
           <label htmlFor='username'>Username</label>
           <input type='email' id='email' name='email' />
