@@ -32,6 +32,8 @@ body#admin {
 /* /(admin)/layout.tsx */
 #admin #content {
   width: 100%;
+  height: 100svh;
+  overflow: auto;
 }
 
 /* /(auth)/layout.tsx */
