@@ -2,10 +2,6 @@
 import { login } from 'lib/data/auth'
 import Button from 'ui/button/button'
 
-const initialState = {
-  message: null,
-}
-
 export default async function LoginPage() {
   const handleLogin = login.bind(null, '/admin')
   return (

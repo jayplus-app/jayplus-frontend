@@ -188,3 +188,38 @@ export async function createBooking(
     throw error
   }
 }
+
+export async function createBookingAdmin(
+  vehicleTypeID: number,
+  serviceTypeID: number,
+  datetime: string
+): Promise<Booking> {
+  noStore()
+  try {
+    const subdomain = await getSubdomain()
+    const access_token = "cookies().get('access_token')?.value"
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Business-Name': subdomain,
+        Authorization: `Bearer ${access_token}`,
+      },
+      body: JSON.stringify({
+        vehicleTypeID: vehicleTypeID.toString(),
+        serviceTypeID: serviceTypeID.toString(),
+        datetime,
+      }),
+    }
+    const res = await fetch(`${apiUrl}/booking/create-booking-admin`, options)
+    const data = await res.json()
+
+    if (data.error) {
+      throw new Error(data.message)
+    }
+
+    return data as Booking
+  } catch (error) {
+    throw error
+  }
+}

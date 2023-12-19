@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 import { useBookingSelectionContext } from 'context/booking-context/BookingSelectionContext'
-import { createBooking } from 'lib/data/booking'
+import { createBookingAdmin } from 'lib/data/booking'
 import Button from 'ui/button/button'
 
 export default function CreateBooking() {
@@ -27,13 +27,15 @@ export default function CreateBooking() {
   }, [selectedVehicleTypeID, selectedServiceTypeID, selectedDatetime])
 
   const handleCreateBooking = () => {
-    createBooking(
+    createBookingAdmin(
       selectedVehicleTypeID,
       selectedServiceTypeID,
       selectedDatetime
     )
       .then(booking => {
-        router.push(`/booking/payment?bookingID=${booking.id}`)
+        if (booking) {
+          console.log('booking created', booking)
+        }
       })
       .catch(error => {
         alert(error)
@@ -42,13 +44,16 @@ export default function CreateBooking() {
 
   return (
     <div id='create-booking'>
-      <Button
-        id='create-booking-button'
-        onClick={handleCreateBooking}
-        disabled={disabled}
-      >
-        Book
-      </Button>
+      <form>
+        <Button
+          id='create-booking-button'
+          type='submit'
+          onClick={handleCreateBooking}
+          disabled={disabled}
+        >
+          Book
+        </Button>
+      </form>
     </div>
   )
 }
