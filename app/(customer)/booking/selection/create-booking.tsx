@@ -9,8 +9,12 @@ import Button from 'ui/button/button'
 
 export default function CreateBooking() {
   const [disabled, setDisabled] = useState<boolean>(true)
-  const { selectedVehicleTypeID, selectedServiceTypeID, selectedDatetime } =
-    useBookingSelectionContext()
+  const {
+    selectedVehicleTypeID,
+    selectedServiceTypeID,
+    selectedDatetime,
+    setDefaultValues,
+  } = useBookingSelectionContext()
 
   const router = useRouter()
 
@@ -33,6 +37,7 @@ export default function CreateBooking() {
       selectedDatetime
     )
       .then(booking => {
+        setDefaultValues()
         router.push(`/booking/payment?bookingID=${booking.id}`)
       })
       .catch(error => {

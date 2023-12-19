@@ -1,3 +1,5 @@
+'use server'
+import { cookies } from 'next/headers'
 import { apiUrl } from 'lib/utils/env'
 import { getSubdomain } from 'lib/utils/url'
 import { unstable_noStore as noStore } from 'next/cache'
@@ -197,7 +199,7 @@ export async function createBookingAdmin(
   noStore()
   try {
     const subdomain = await getSubdomain()
-    const access_token = "cookies().get('access_token')?.value"
+    const access_token = cookies().get('access_token')?.value
     const options = {
       method: 'POST',
       headers: {

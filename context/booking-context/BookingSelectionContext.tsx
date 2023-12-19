@@ -13,6 +13,7 @@ interface BookingSelectionContextProps {
   setSelectedVehicleTypeID: (id: number) => void
   setSelectedServiceTypeID: (id: number) => void
   setSelectedDatetime: (datetime: string) => void
+  setDefaultValues: () => void
 }
 
 const BookingSelectionContext = createContext<BookingSelectionContextProps>({
@@ -24,6 +25,7 @@ const BookingSelectionContext = createContext<BookingSelectionContextProps>({
   setSelectedVehicleTypeID: () => {},
   setSelectedServiceTypeID: () => {},
   setSelectedDatetime: () => {},
+  setDefaultValues: () => {},
 })
 
 export function BookingSelectionProvider({
@@ -43,6 +45,12 @@ export function BookingSelectionProvider({
   )
   const [selectedDatetime, setSelectedDatetime] = useState<string>('')
 
+  const setDefaultValues = () => {
+    setSelectedVehicleTypeID(vehicleTypes[0]?.id || 0)
+    setSelectedServiceTypeID(serviceTypes[0]?.id || 0)
+    setSelectedDatetime('')
+  }
+
   return (
     <BookingSelectionContext.Provider
       value={{
@@ -54,6 +62,7 @@ export function BookingSelectionProvider({
         setSelectedVehicleTypeID,
         setSelectedServiceTypeID,
         setSelectedDatetime,
+        setDefaultValues,
       }}
     >
       {children}

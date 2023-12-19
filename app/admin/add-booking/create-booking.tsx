@@ -9,10 +9,12 @@ import Button from 'ui/button/button'
 
 export default function CreateBooking() {
   const [disabled, setDisabled] = useState<boolean>(true)
-  const { selectedVehicleTypeID, selectedServiceTypeID, selectedDatetime } =
-    useBookingSelectionContext()
-
-  const router = useRouter()
+  const {
+    selectedVehicleTypeID,
+    selectedServiceTypeID,
+    selectedDatetime,
+    setDefaultValues,
+  } = useBookingSelectionContext()
 
   useEffect(() => {
     if (
@@ -34,7 +36,8 @@ export default function CreateBooking() {
     )
       .then(booking => {
         if (booking) {
-          console.log('booking created', booking)
+          alert('booking created with id: ' + booking.id)
+          setDefaultValues()
         }
       })
       .catch(error => {
@@ -44,16 +47,13 @@ export default function CreateBooking() {
 
   return (
     <div id='create-booking'>
-      <form>
-        <Button
-          id='create-booking-button'
-          type='submit'
-          onClick={handleCreateBooking}
-          disabled={disabled}
-        >
-          Book
-        </Button>
-      </form>
+      <Button
+        id='create-booking-button'
+        onClick={handleCreateBooking}
+        disabled={disabled}
+      >
+        Book
+      </Button>
     </div>
   )
 }
