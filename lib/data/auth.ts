@@ -41,7 +41,7 @@ export async function login(redirectPath: string, formData: FormData) {
   }
 }
 
-export async function logout(redirectPath: string, formData: FormData) {
+export async function logout(redirectPath: string) {
   try {
     cookies().delete('access_token')
     cookies().delete('refresh_token')
