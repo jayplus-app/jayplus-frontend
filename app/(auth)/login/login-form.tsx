@@ -17,7 +17,11 @@ export default function LoginForm() {
         window.location.href = '/admin'
       })
       .catch(error => {
-        setErrorMessage(error.message)
+        const errorMessage =
+          error.message === 'invalid login credentials'
+            ? error.message
+            : 'Something went wrong. Please try again later.'
+        setErrorMessage(errorMessage)
       })
       .finally(() => {
         setEmail('')
