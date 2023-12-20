@@ -37,7 +37,7 @@ body#admin {
 }
 
 /* /(auth)/layout.tsx */
-#auth-layout #auth-card {
+#auth #auth-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -121,12 +121,12 @@ body#admin {
 }
 
 /* /(auth)/login/page.tsx */
-#admin-login-page {
+#auth #login-page {
   width: 100%;
   display: flex;
   justify-content: center;
 }
-#admin-login-page #login-form {
+#auth #login-page #login-form {
   background-color: var(--primary-color-1);
   padding: 20px;
   width: 80%;
@@ -134,13 +134,13 @@ body#admin {
   border-radius: 5px;
 }
 
-#admin-login-page #login-form .form-group {
+#auth #login-page #login-form .form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 }
 
-#admin-login-page #login-form .form-group input {
+#auth #login-page #login-form .form-group input {
   width: 100%;
   padding: 5px;
   border: 1px solid var(--primary-color-2);
@@ -149,11 +149,11 @@ body#admin {
   box-sizing: border-box;
 }
 
-#admin-login-page #login-form .form-button {
+#auth #login-page #login-form .form-button {
   text-align: center;
 }
 
-#admin-login-page #login-form .form-button button[type='submit'] {
+#auth #login-page #login-form .form-button button[type='submit'] {
   background-color: var(--secondary-color-1);
   border: 1px solid var(--secondary-color-1);
   border-radius: 5px;
@@ -163,9 +163,15 @@ body#admin {
   transition: 200ms;
 }
 
-#admin-login-page #login-form .form-button button[type='submit']:hover {
+#auth #login-page #login-form .form-button button[type='submit']:hover {
   background-color: var(--secondary-color-2);
   border: 1px solid var(--secondary-color-2);
+}
+
+#auth #login-page #login-form .error-message {
+  color: rgb(198, 0, 0);
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 #admin #add-booking-page {

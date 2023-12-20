@@ -4,10 +4,7 @@ import { cookies } from 'next/headers'
 import { apiUrl } from 'lib/utils/env'
 import { getSubdomain } from 'lib/utils/url'
 
-export async function login(prevState: any, formData: FormData) {
-  const email = formData.get('email')
-  const password = formData.get('password')
-
+export async function login(email: string, password: string) {
   try {
     const subdomain = await getSubdomain()
     const res = await fetch(`${apiUrl}/auth/login`, {
@@ -23,9 +20,9 @@ export async function login(prevState: any, formData: FormData) {
     const data = await res.json()
 
     if (!res.ok) {
-      return data.message
-        ? { errorMessage: data.message }
-        : { errorMessage: 'An error happened' }
+      throw data.message
+        ? new Error(data.message)
+        : new Error('Something went wrong')
     }
 
     cookies().set('access_token', data.access_token.token, {
@@ -36,13 +33,9 @@ export async function login(prevState: any, formData: FormData) {
       maxAge: data.refresh_token.expiry_seconds,
     })
 
-    return {
-      success: true,
-    }
+    return Promise.resolve()
   } catch (error) {
-    return {
-      errorMessage: 'Some Error Happened',
-    }
+    throw error
   }
 }
 

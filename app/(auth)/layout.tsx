@@ -14,9 +14,7 @@ export default function RootLayout({
   return (
     <html>
       <body id='auth'>
-        <div id='auth-layout'>
-          <div id='auth-card'>{children}</div>
-        </div>
+        <div id='auth-card'>{children}</div>
       </body>
     </html>
   )
