@@ -12,9 +12,13 @@ export default function LoginForm() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     login(email, password)
-      .then(() => {
-        setErrorMessage('')
-        window.location.href = '/admin'
+      .then(data => {
+        if (data?.success === false) {
+          setErrorMessage(data.message)
+        } else {
+          setErrorMessage('')
+          window.location.href = '/admin'
+        }
       })
       .catch(error => {
         setErrorMessage(error.message)

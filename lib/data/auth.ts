@@ -20,9 +20,8 @@ export async function login(email: string, password: string) {
     const data = await res.json()
 
     if (!res.ok) {
-      throw data.message
-        ? new Error(data.message)
-        : new Error('Something went wrong')
+      console.log('this bitch is not ok')
+      return { success: false, message: data.message || 'Something went wrong' }
     }
 
     cookies().set('access_token', data.access_token.token, {
