@@ -1,7 +1,9 @@
-export default function Page() {
+import BookingsCalendarView from './bookings-calendar-view'
+
+export default async function Page() {
   return (
-    <div>
-      <h1>Booking Admin</h1>
+    <div id='booking-management-page'>
+      <BookingsCalendarView />
     </div>
   )
 }

@@ -186,6 +186,56 @@ body#admin {
   padding: 10px;
 }
 
+/* /(admin)/booking-management/page.tsx */
+#admin #booking-management-page {
+  margin: 8px;
+}
+
+#bookings-calendar-view {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+#admin
+  #booking-management-page
+  #bookings-calendar-view
+  .calendar-day-switch-button {
+  height: 40px;
+  width: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color-1);
+  border: 1px solid var(--primary-color-2);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+#admin
+  #booking-management-page
+  #bookings-calendar-view
+  .calendar-day-switch-button:hover {
+  background-color: var(--primary-color-2);
+}
+
+#admin
+  #booking-management-page
+  #bookings-calendar-view
+  .calendar-day-switch-button:disabled {
+  cursor: not-allowed;
+}
+
+#admin
+  #booking-management-page
+  #bookings-calendar-view
+  .calendar-day-switch-button:disabled:hover {
+  background-color: var(--primary-color-1);
+}
+
 /* COMPONENTS */
 /* Description.tsx */
 .description-field {
@@ -292,7 +342,7 @@ body#admin {
 }
 
 /* CalendarColumnInputCell.tsx */
-.calendar-column-input-cell {
+.calendar-column-cell-input {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -305,28 +355,47 @@ body#admin {
   transition: 200ms;
 }
 
-.calendar-column-input-cell:hover {
+.calendar-column-cell-input:hover {
   background-color: var(--secondary-color-1);
   border: 1px solid var(--secondary-color-1);
 }
 
-.calendar-column-input-cell.checked {
+.calendar-column-cell-input.checked {
   background-color: var(--secondary-color-1);
   border: 1px solid var(--secondary-color-1);
 }
 
-.calendar-column-input-cell.disabled {
+.calendar-column-cell-input.disabled {
   cursor: not-allowed;
   background-color: var(--primary-color-2);
   opacity: 0.3;
 }
 
-.calendar-column-input-cell.disabled:hover {
+.calendar-column-cell-input.disabled:hover {
   border: 1px solid var(--primary-color-2);
 }
 
-.calendar-column-input-cell input[type='radio'] {
+.calendar-column-cell-input input[type='radio'] {
   display: none;
+}
+
+/* CalendarColumnCellView.tsx */
+.calendar-column-cell-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color-2);
+  border: 1px solid var(--primary-color-2);
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.calendar-column-cell-view:hover {
+  background-color: var(--primary-color-3);
+  border: 1px solid var(--primary-color-3);
 }
 
 /* CreateBooking.tsx */

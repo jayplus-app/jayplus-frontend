@@ -14,7 +14,7 @@ export default function CalendarColumnCellInput({
 }) {
   return (
     <label
-      className={`calendar-column-input-cell ${active ? 'checked' : ''} ${
+      className={`calendar-column-cell-input ${active ? 'checked' : ''} ${
         disabled ? 'disabled' : ''
       }`}
       onClick={() => !disabled && onSelectTimeslot(timeslot.startTime)}

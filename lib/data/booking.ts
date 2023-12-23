@@ -225,3 +225,35 @@ export async function createBookingAdmin(
     throw error
   }
 }
+
+/**
+ * Fetches the bookings data from the server.
+ * Includes the subdomain which is the business name in the request header.
+ * @returns {Promise<Booking[]>} A promise that resolves to an array of bookings.
+ * @throws {Error} If there is an error while fetching the data.
+ */
+export async function fetchBookings(date: string): Promise<Booking[]> {
+  noStore()
+  try {
+    const subdomain = await getSubdomain()
+    const access_token = cookies().get('access_token')?.value
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Business-Name': subdomain,
+        Authorization: `Bearer ${access_token}`,
+      },
+    }
+    const res = await fetch(`${apiUrl}/booking/bookings?date=${date}`, options)
+    const data = await res.json()
+
+    if (data?.error) {
+      throw new Error(data.message)
+    }
+
+    return data as Booking[]
+  } catch (error) {
+    throw error
+  }
+}
