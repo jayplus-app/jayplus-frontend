@@ -1,13 +1,21 @@
+import BookingSummary from 'lib/interfaces/BookingSummary'
+import { extractTimeFromISOString } from 'lib/utils/date'
+
 export default function CalendarColumnCellView({
-  children,
-  onClick,
+  bookingSummary,
+  onSelectbooking,
 }: {
-  children: React.ReactNode
-  onClick?: (datetime: string) => void
+  bookingSummary: BookingSummary
+  onSelectbooking: (id: number) => void
 }) {
   return (
-    <div className='calendar-column-cell-view' onClick={() => onClick}>
-      {children}
+    <div
+      className='calendar-column-cell-view'
+      onClick={() => onSelectbooking(bookingSummary.id)}
+    >
+      <b>{extractTimeFromISOString(bookingSummary.datetime)}</b>
+      <span>{bookingSummary.vehicleType}</span>
+      <span>{bookingSummary.serviceType}</span>
     </div>
   )
 }

@@ -385,6 +385,7 @@ body#admin {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 5px;
   background-color: var(--primary-color-2);
   border: 1px solid var(--primary-color-2);
   border-radius: 5px;

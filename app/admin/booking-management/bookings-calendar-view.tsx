@@ -1,7 +1,7 @@
 'use client'
 
 import { fetchBookings } from 'lib/data/booking'
-import Booking from 'lib/interfaces/Booking'
+import BookingSummary from 'lib/interfaces/BookingSummary'
 import {
   addDaysToDate,
   formatDateToRelativeOrMMMDDForm,
@@ -16,8 +16,8 @@ import CalendarView from 'ui/calendar/CalendarView'
 
 export default function BookingsCalendarView() {
   const [calendarStartDate, setCalendarStartDate] = useState(todaysDate())
-  const [bookingsLists, setBookingsLists] = useState<{
-    [date: string]: Booking[]
+  const [bookingSummaryLists, setBookingSummaryLists] = useState<{
+    [date: string]: BookingSummary[]
   }>({})
 
   const fetchAllBookings = useCallback(async (dates: string[]) => {
@@ -38,7 +38,7 @@ export default function BookingsCalendarView() {
 
     fetchAllBookings(dates).then(bookingsArrays => {
       if (bookingsArrays) {
-        setBookingsLists(
+        setBookingSummaryLists(
           Object.fromEntries(dates.map((date, i) => [date, bookingsArrays[i]]))
         )
       }
@@ -53,6 +53,10 @@ export default function BookingsCalendarView() {
     setCalendarStartDate(addDaysToDate(calendarStartDate, -1))
   }
 
+  const handleClickBooking = (id: number) => {
+    console.log(id)
+  }
+
   return (
     <div id='bookings-calendar-view'>
       <Button
@@ -63,15 +67,17 @@ export default function BookingsCalendarView() {
         <b>{'<'}</b>
       </Button>
       <CalendarView>
-        {Object.entries(bookingsLists).map(([date, bookings]) => (
+        {Object.entries(bookingSummaryLists).map(([date, bookings]) => (
           <CalendarColumn key={date}>
             <CalendarColumnHeader>
               <b>{formatDateToRelativeOrMMMDDForm(date, todaysDate())}</b>
             </CalendarColumnHeader>
             {bookings?.map(booking => (
-              <CalendarColumnCellView key={booking.id}>
-                <b>{booking.datetime}</b>
-              </CalendarColumnCellView>
+              <CalendarColumnCellView
+                key={booking.id}
+                bookingSummary={booking}
+                onSelectbooking={handleClickBooking}
+              />
             ))}
           </CalendarColumn>
         ))}

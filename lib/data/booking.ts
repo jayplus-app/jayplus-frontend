@@ -8,6 +8,7 @@ import ServiceType from 'lib/interfaces/ServiceType'
 import BookingTimeslot from 'lib/interfaces/BookingTimeslots'
 import ServiceCost from 'lib/interfaces/ServiceCost'
 import Booking from 'lib/interfaces/Booking'
+import BookingSummary from 'lib/interfaces/BookingSummary'
 
 /**
  * Fetches the vehicle types data from the server.
@@ -232,7 +233,7 @@ export async function createBookingAdmin(
  * @returns {Promise<Booking[]>} A promise that resolves to an array of bookings.
  * @throws {Error} If there is an error while fetching the data.
  */
-export async function fetchBookings(date: string): Promise<Booking[]> {
+export async function fetchBookings(date: string): Promise<BookingSummary[]> {
   noStore()
   try {
     const subdomain = await getSubdomain()
@@ -252,7 +253,7 @@ export async function fetchBookings(date: string): Promise<Booking[]> {
       throw new Error(data.message)
     }
 
-    return data as Booking[]
+    return data as BookingSummary[]
   } catch (error) {
     throw error
   }
