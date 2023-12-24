@@ -9,6 +9,7 @@ import BookingTimeslot from 'lib/interfaces/BookingTimeslots'
 import ServiceCost from 'lib/interfaces/ServiceCost'
 import Booking from 'lib/interfaces/Booking'
 import BookingSummary from 'lib/interfaces/BookingSummary'
+import BookingReceipt from 'lib/interfaces/BookingReceipt'
 
 /**
  * Fetches the vehicle types data from the server.
@@ -254,6 +255,60 @@ export async function fetchBookings(date: string): Promise<BookingSummary[]> {
     }
 
     return data as BookingSummary[]
+  } catch (error) {
+    throw error
+  }
+}
+
+export async function fetchBooking(id: number): Promise<Booking> {
+  noStore()
+  try {
+    const subdomain = await getSubdomain()
+    const access_token = cookies().get('access_token')?.value
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Business-Name': subdomain,
+        Authorization: `Bearer ${access_token}`,
+      },
+    }
+    const res = await fetch(`${apiUrl}/booking/booking/${id}`, options)
+
+    const data = await res.json()
+
+    if (data?.error) {
+      throw new Error(data.message)
+    }
+
+    return data as Booking
+  } catch (error) {
+    throw error
+  }
+}
+
+export async function cancelBooking(id: number): Promise<string> {
+  noStore()
+  try {
+    const subdomain = await getSubdomain()
+    const access_token = cookies().get('access_token')?.value
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Business-Name': subdomain,
+        Authorization: `Bearer ${access_token}`,
+      },
+    }
+    const res = await fetch(`${apiUrl}/booking/cancel-booking/${id}`, options)
+
+    const data = await res.json()
+
+    if (data?.error) {
+      throw new Error(data.message)
+    }
+
+    return data.message as string
   } catch (error) {
     throw error
   }

@@ -191,7 +191,33 @@ body#admin {
   margin: 8px;
 }
 
-#bookings-calendar-view {
+#admin #booking-management-page #bookings-calendar-view #today {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#admin #booking-management-page #bookings-calendar-view #today button {
+  background-color: var(--secondary-color-1);
+  border: 1px solid var(--secondary-color-1);
+  border-radius: 5px;
+  padding: 10px;
+  width: 100px;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+@media (min-width: 768px) {
+  #admin #booking-management-page #bookings-calendar-view #today button {
+    width: 160px;
+  }
+}
+
+#admin #booking-management-page #bookings-calendar-view #today button:hover {
+  background-color: var(--secondary-color-2);
+  border: 1px solid var(--secondary-color-2);
+}
+
+#admin #booking-management-page #bookings-calendar-view #calendar {
   display: flex;
   justify-content: space-between;
   gap: 10px;
@@ -201,6 +227,7 @@ body#admin {
 #admin
   #booking-management-page
   #bookings-calendar-view
+  #calendar
   .calendar-day-switch-button {
   height: 40px;
   width: 20px;
@@ -218,6 +245,7 @@ body#admin {
 #admin
   #booking-management-page
   #bookings-calendar-view
+  #calendar
   .calendar-day-switch-button:hover {
   background-color: var(--primary-color-2);
 }
@@ -225,6 +253,7 @@ body#admin {
 #admin
   #booking-management-page
   #bookings-calendar-view
+  #calendar
   .calendar-day-switch-button:disabled {
   cursor: not-allowed;
 }
@@ -232,6 +261,7 @@ body#admin {
 #admin
   #booking-management-page
   #bookings-calendar-view
+  #calendar
   .calendar-day-switch-button:disabled:hover {
   background-color: var(--primary-color-1);
 }
@@ -532,4 +562,88 @@ body#admin {
 .nav-link.active,
 .nav-link:hover {
   background-color: var(--complementary-color-3);
+}
+
+/* modal.tsx */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal .modal-layout {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.modal .modal-layout .modal-header {
+  text-align: right;
+}
+
+.modal .modal-layout .modal-header .modal-close-button {
+  cursor: pointer;
+}
+
+/* booking-modal.tsx */
+.booking-modal table {
+  width: 90vw;
+  max-width: 400px;
+}
+
+.booking-modal .cancel-booking {
+  display: flex;
+  justify-content: right;
+  gap: 2px;
+  font-size: 14px;
+  color: rgb(197, 0, 0);
+}
+
+.booking-modal .cancel-booking:hover {
+  cursor: pointer;
+}
+
+/* confirm-cancel-booking-modal.tsx */
+.confirm-cancel-booking-modal .modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.confirm-cancel-booking-modal .no-button {
+  background-color: var(--primary-color-2);
+  border: 1px solid var(--primary-color-2);
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.confirm-cancel-booking-modal .no-button:hover {
+  background-color: var(--primary-color-3);
+  border: 1px solid var(--primary-color-3);
+}
+
+.confirm-cancel-booking-modal .yes-button {
+  background-color: rgb(197, 0, 0);
+  border: 1px solid rgb(197, 0, 0);
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.confirm-cancel-booking-modal .yes-button:hover {
+  background-color: rgb(168, 1, 1);
+  border: 1px solid rgb(168, 1, 1);
 }

@@ -2,8 +2,8 @@ export default interface Booking {
   id: number
   businessId: number
   userId: number
-  vehicleTypeId: number
-  serviceTypeId: number
+  vehicleType: string
+  serviceType: string
   datetime: string
   estimatedMinutes: number
   cost: number
