@@ -26,6 +26,7 @@ body#admin {
   margin: 0;
   display: flex;
   flex-direction: column;
+  height: 100svh;
 
   @media (min-width: 768px) {
     flex-direction: row;
