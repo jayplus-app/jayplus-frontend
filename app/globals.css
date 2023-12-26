@@ -18,6 +18,10 @@ body#auth {
   margin: 0;
 }
 
+body#customer {
+  height: 100svh;
+}
+
 body#admin {
   margin: 0;
   display: flex;
@@ -47,10 +51,10 @@ body#admin {
 
 /* PAGES */
 /* /(customer)/booking/selection/page.tsx */
-#customer #booking #selection-page {
+#customer #selection-page {
   margin-bottom: 96px;
 }
-#customer #booking #selection-page #footer {
+#customer #selection-page #footer {
   background-color: white;
   text-align: center;
   position: sticky;
@@ -90,22 +94,22 @@ body#admin {
 }
 
 /* /(customer)/booking/payment-success/page.tsx */
-#customer #booking #payment-success-page .container {
+#customer #payment-success-page .container {
   width: 100%;
   max-width: 580px;
   margin: 0 auto;
 }
 
-#customer #booking #payment-success-page #title {
+#customer #payment-success-page #title {
   color: var(--complementary-color-3);
   text-align: center;
 }
 
-#customer #booking #payment-success-page .back-to-booking {
+#customer #payment-success-page .back-to-booking {
   text-align: center;
 }
 
-#customer #booking #payment-success-page .back-to-booking-button {
+#customer #payment-success-page .back-to-booking-button {
   background-color: var(--secondary-color-1);
   border: 1px solid var(--secondary-color-1);
   border-radius: 5px;
@@ -115,7 +119,7 @@ body#admin {
   transition: 200ms;
 }
 
-#customer #booking #payment-success-page .back-to-booking-button:hover {
+#customer #payment-success-page .back-to-booking-button:hover {
   background-color: var(--secondary-color-2);
   border: 1px solid var(--secondary-color-2);
 }
